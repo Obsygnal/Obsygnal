@@ -20,6 +20,10 @@ color:white;
 overflow-x:hidden;
 }
 
+canvas{
+display:block;
+}
+
 .gradient-bg{
 position:fixed;
 top:0;
@@ -28,28 +32,8 @@ width:100%;
 height:100%;
 z-index:-1;
 background:
-radial-gradient(circle at 20% 50%,rgba(120,119,198,0.15)0%,transparent 50%),
-radial-gradient(circle at 80% 80%,rgba(99,102,241,0.15)0%,transparent 50%);
-}
-
-.animated-grid{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-height:100%;
-z-index:-1;
-opacity:.03;
-background-image:
-linear-gradient(rgba(99,102,241,.5)1px,transparent 1px),
-linear-gradient(90deg,rgba(99,102,241,.5)1px,transparent 1px);
-background-size:50px 50px;
-animation:gridMove 20s linear infinite;
-}
-
-@keyframes gridMove{
-0%{transform:translate(0,0);}
-100%{transform:translate(50px,50px);}
+radial-gradient(circle at 20% 50%,rgba(120,119,198,0.15),transparent 50%),
+radial-gradient(circle at 80% 80%,rgba(99,102,241,0.15),transparent 50%);
 }
 
 nav{
@@ -57,8 +41,8 @@ padding:1.5rem 5%;
 display:flex;
 justify-content:space-between;
 align-items:center;
-z-index:10;
 position:relative;
+z-index:10;
 }
 
 .logo{
@@ -87,8 +71,8 @@ z-index:10;
 }
 
 .hero h1{
-font-size:4.5rem;
-background:linear-gradient(135deg,#fff,#a0a0ff);
+font-size:4rem;
+background:linear-gradient(135deg,#ffffff,#a0a0ff);
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
 }
@@ -105,7 +89,7 @@ margin-right:auto;
 .features{
 padding:6rem 5%;
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
 gap:2rem;
 max-width:1200px;
 margin:auto;
@@ -118,6 +102,12 @@ background:rgba(255,255,255,.03);
 border:1px solid rgba(255,255,255,.08);
 border-radius:16px;
 padding:2rem;
+transition:.3s;
+}
+
+.feature-card:hover{
+transform:translateY(-8px);
+box-shadow:0 20px 40px rgba(102,126,234,.25);
 }
 
 footer{
@@ -129,26 +119,26 @@ z-index:10;
 }
 
 </style>
+
 </head>
 
 <body>
 
 <div class="gradient-bg"></div>
-<div class="animated-grid"></div>
 
 <nav>
 <div class="logo">Obsygnal</div>
 <div class="nav-links">
 <a href="#features">Features</a>
-<a href="https://github.com/Obsygnal/Obsygnal">GitHub</a>
+<a href="https://github.com/sarkarbikram90/Obsygnal">GitHub</a>
 </div>
 </nav>
 
 <section class="hero">
 <h1>Unified Observability<br>Redefined</h1>
 <p>
-Obsygnal is redefining observability for modern infrastructure —
-with unified metrics, logs, traces and intelligent signals.
+Signals, metrics, logs and traces flowing through modern infrastructure.
+Obsygnal helps teams see everything.
 </p>
 </section>
 
@@ -179,15 +169,6 @@ with unified metrics, logs, traces and intelligent signals.
 
 <script>
 
-const container=document.createElement("div")
-container.style.position="fixed"
-container.style.top="0"
-container.style.left="0"
-container.style.width="100%"
-container.style.height="100%"
-container.style.zIndex="-2"
-document.body.appendChild(container)
-
 const scene=new THREE.Scene()
 
 const camera=new THREE.PerspectiveCamera(
@@ -199,71 +180,75 @@ window.innerWidth/window.innerHeight,
 
 const renderer=new THREE.WebGLRenderer({alpha:true})
 renderer.setSize(window.innerWidth,window.innerHeight)
-container.appendChild(renderer.domElement)
+renderer.domElement.style.position="fixed"
+renderer.domElement.style.top=0
+renderer.domElement.style.zIndex=-2
+document.body.appendChild(renderer.domElement)
 
-camera.position.z=70
+camera.position.z=80
 
 const nodes=[]
 const edges=[]
-const signals=[]
+const pulses=[]
 
-const nodeGeometry=new THREE.SphereGeometry(0.7,16,16)
-const nodeMaterial=new THREE.MeshBasicMaterial({color:0x7c7cff})
+const nodeGeometry=new THREE.SphereGeometry(0.8,16,16)
 
-for(let i=0;i<35;i++){
+function createNode(){
 
-const node=new THREE.Mesh(nodeGeometry,nodeMaterial)
+const material=new THREE.MeshBasicMaterial({color:0x7c7cff})
+const mesh=new THREE.Mesh(nodeGeometry,material)
 
-node.position.x=(Math.random()-0.5)*80
-node.position.y=(Math.random()-0.5)*60
-node.position.z=(Math.random()-0.5)*40
+mesh.position.x=(Math.random()-0.5)*90
+mesh.position.y=(Math.random()-0.5)*60
+mesh.position.z=(Math.random()-0.5)*40
 
-scene.add(node)
-nodes.push(node)
+scene.add(mesh)
+nodes.push(mesh)
 
+}
+
+for(let i=0;i<40;i++){
+createNode()
 }
 
 const lineMaterial=new THREE.LineBasicMaterial({
 color:0x5f7cff,
 transparent:true,
-opacity:.35
+opacity:.3
 })
 
-for(let i=0;i<nodes.length;i++){
+nodes.forEach((a,i)=>{
 
-for(let j=i+1;j<nodes.length;j++){
+nodes.forEach((b,j)=>{
 
-if(Math.random()<0.07){
+if(i<j && Math.random()<0.06){
 
-const points=[]
-points.push(nodes[i].position)
-points.push(nodes[j].position)
-
+const points=[a.position,b.position]
 const geometry=new THREE.BufferGeometry().setFromPoints(points)
 const line=new THREE.Line(geometry,lineMaterial)
 
 scene.add(line)
 
-edges.push({a:nodes[i],b:nodes[j]})
+edges.push({a,b})
 
 }
 
-}
+})
 
-}
+})
 
-const signalGeometry=new THREE.SphereGeometry(.25,8,8)
-const signalMaterial=new THREE.MeshBasicMaterial({color:0xffffff})
+const pulseGeometry=new THREE.SphereGeometry(.25,8,8)
+const pulseMaterial=new THREE.MeshBasicMaterial({color:0xffffff})
 
 edges.forEach(edge=>{
 
-const signal=new THREE.Mesh(signalGeometry,signalMaterial)
+const pulse=new THREE.Mesh(pulseGeometry,pulseMaterial)
 
-signal.progress=Math.random()
-signal.edge=edge
+pulse.progress=Math.random()
+pulse.edge=edge
 
-scene.add(signal)
-signals.push(signal)
+scene.add(pulse)
+pulses.push(pulse)
 
 })
 
@@ -275,32 +260,52 @@ mouseX=(e.clientX-window.innerWidth/2)*0.0008
 mouseY=(e.clientY-window.innerHeight/2)*0.0008
 })
 
+const raycaster=new THREE.Raycaster()
+const mouse=new THREE.Vector2()
+
+document.addEventListener("mousemove",event=>{
+mouse.x=(event.clientX/window.innerWidth)*2-1
+mouse.y=-(event.clientY/window.innerHeight)*2+1
+})
+
 function animate(){
 
 requestAnimationFrame(animate)
 
-scene.rotation.y+=0.0007
+scene.rotation.y+=0.0006
 scene.rotation.x+=mouseY
 scene.rotation.y+=mouseX
 
-signals.forEach(signal=>{
+pulses.forEach(p=>{
 
-signal.progress+=0.01
-if(signal.progress>1)signal.progress=0
+p.progress+=0.01
+if(p.progress>1)p.progress=0
 
-const ax=signal.edge.a.position.x
-const ay=signal.edge.a.position.y
-const az=signal.edge.a.position.z
+const ax=p.edge.a.position.x
+const ay=p.edge.a.position.y
+const az=p.edge.a.position.z
 
-const bx=signal.edge.b.position.x
-const by=signal.edge.b.position.y
-const bz=signal.edge.b.position.z
+const bx=p.edge.b.position.x
+const by=p.edge.b.position.y
+const bz=p.edge.b.position.z
 
-signal.position.x=ax+(bx-ax)*signal.progress
-signal.position.y=ay+(by-ay)*signal.progress
-signal.position.z=az+(bz-az)*signal.progress
+p.position.x=ax+(bx-ax)*p.progress
+p.position.y=ay+(by-ay)*p.progress
+p.position.z=az+(bz-az)*p.progress
 
 })
+
+raycaster.setFromCamera(mouse,camera)
+
+const intersects=raycaster.intersectObjects(nodes)
+
+nodes.forEach(n=>n.material.color.set(0x7c7cff))
+
+if(intersects.length>0){
+
+intersects[0].object.material.color.set(0xffffff)
+
+}
 
 renderer.render(scene,camera)
 
