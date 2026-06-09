@@ -183,13 +183,13 @@
       color: #EAF2FF; margin-bottom: 28px;
     }
     .hero-rotating {
-      display: block; position: relative; height: 1.1em;
-      overflow: hidden; min-height: 1.1em;
+      display: block; position: relative;
+      height: 1.15em; /* single-line only — first line is static */
     }
     .hero-rotating-item {
-      position: absolute; width: 100%;
-      transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
-      opacity: 0; transform: translateY(20px);
+      position: absolute; width: 100%; left: 0; top: 0;
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+      opacity: 0; transform: translateY(16px); white-space: nowrap;
     }
     .hero-rotating-item.active { opacity: 1; transform: translateY(0); }
     .hero-sub {
@@ -731,6 +731,7 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="nav-cta">
+      <a href="#contact" class="btn btn-ghost" style="padding:9px 20px;font-size:0.85rem;">Sign In</a>
       <a href="#contact" class="btn btn-primary" style="padding:9px 20px;font-size:0.85rem;">Book Discovery Call</a>
       <div class="hamburger" id="hamburger" onclick="toggleMobile()">
         <span></span><span></span><span></span>
@@ -760,11 +761,12 @@
     </div>
 
     <h1 class="hero-headline reveal reveal-delay-1">
+      Enterprise Knowledge.<br>
       <span class="hero-rotating" id="rotating-text">
-        <span class="hero-rotating-item active gradient-text">Enterprise Knowledge.<br>Instantly Accessible.</span>
-        <span class="hero-rotating-item">Transform Knowledge<br><span class="gradient-text">Into Intelligence</span></span>
-        <span class="hero-rotating-item">RAG Systems Built<br><span class="gradient-text">For Production</span></span>
-        <span class="hero-rotating-item">Make Your Organization<br><span class="gradient-text">Searchable</span></span>
+        <span class="hero-rotating-item active gradient-text">Instantly Accessible.</span>
+        <span class="hero-rotating-item gradient-text">Transformed Into Intelligence.</span>
+        <span class="hero-rotating-item gradient-text">Built for Production.</span>
+        <span class="hero-rotating-item gradient-text">Made Searchable.</span>
       </span>
     </h1>
 
@@ -1240,35 +1242,30 @@
 
     <div class="team-grid">
       <div class="team-card reveal reveal-delay-1">
-        <div class="team-avatar">AD</div>
-        <div class="team-name">Akhil Dhanpal</div>
-        <div class="team-role">Co-Founder</div>
-        <div class="team-bio">specializing in large-scale information retrieval and enterprise search infrastructure.</div>
-        <a href="#" class="team-linkedin">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn
-        </a>
-      </div>
-      <div class="team-card reveal reveal-delay-2">
-        <div class="team-avatar">BS</div>
+        <div class="team-avatar">BK</div>
         <div class="team-name">Bikram Sarkar</div>
         <div class="team-role">Co-Founder</div>
-        <div class="team-bio">ML Engineer with expertise in vector databases, knowledge graphs, and production LLM.</div>
-        <a href="#" class="team-linkedin">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn
-        </a>
+        <div class="team-bio"> Machine Learning engineer specializing in information retrieval and enterprise search infrastructure.</div>
+      </div>
+      <div class="team-card reveal reveal-delay-2">
+        <div class="team-avatar">AK</div>
+        <div class="team-name">Akhil Dhanpal</div>
+        <div class="team-role">Co-Founder</div>
+        <div class="team-bio">ML systems architect with deep expertise in vector databases, knowledge graphs, and production LLM infrastructure.</div>
       </div>
       <div class="team-card reveal reveal-delay-3">
-        <div class="team-avatar">NV</div>
+        <div class="team-avatar">NP</div>
         <div class="team-name">Naveen Pawar</div>
+        <div class="team-role">C-Founder</div>
+        <div class="team-bio">Enterprise software architect focused on designing scalable, observable, and maintainable knowledge systems.</div>
+       </div>
+      <div class="team-card reveal reveal-delay-4">
+        <div class="team-avatar">SG</div>
+        <div class="team-name">Souradeep Ghosh</div>
         <div class="team-role">Co-Founder</div>
-        <div class="team-bio">Enterprise software engineer focused on designing scalable, observable, and maintainable knowledge systems.</div>
-        <a href="#" class="team-linkedin">
-          <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          LinkedIn
-        </a>
+        <div class="team-bio">NLP and information retrieval, focused on pushing the boundaries of RAG evaluation and accuracy.</div>
       </div>
+    </div>
 
     <div class="philosophy reveal reveal-delay-2">
       <div class="philosophy-title">Our Philosophy</div>
@@ -1486,7 +1483,7 @@
     </div>
 
     <div class="footer-bottom">
-      <div class="footer-copy">© 2026 Obsygnal, Inc. All rights reserved.</div>
+      <div class="footer-copy">© 2025 Obsygnal, Inc. All rights reserved.</div>
       <div class="footer-tagline">Transforming Enterprise Knowledge Into Intelligence</div>
     </div>
   </div>
