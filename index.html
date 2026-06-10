@@ -1,39 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Obsygnal — Enterprise RAG Solutions</title>
-  <meta name="description" content="Obsygnal builds Retrieval-Augmented Generation systems that connect enterprise knowledge to AI, enabling trusted answers, intelligent search, and operational efficiency.">
+  <meta name="description"
+    content="Obsygnal builds Retrieval-Augmented Generation systems that connect enterprise knowledge to AI, enabling trusted answers, intelligent search, and operational efficiency.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
   <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:         #010308;
-      --bg1:        #030713;
-      --bg2:        #060C1A;
-      --bg3:        #091124;
-      --border:     rgba(22, 48, 100, 0.55);
-      --border2:    rgba(35, 75, 145, 0.75);
-      --cyan:       #00D4FF;
-      --cyan2:      #00FFAA;
-      --cyan-dim:   rgba(0, 212, 255, 0.08);
-      --cyan-glow:  rgba(0, 212, 255, 0.25);
-      --text1:      #DFEEFF;
-      --text2:      #7A9DD0;
-      --text3:      #43629A;
-      --display:    'Syne', sans-serif;
-      --body:       'DM Sans', sans-serif;
-      --mono:       'JetBrains Mono', monospace;
-      --r:          16px;
-      --rl:         24px;
-      --ease:       cubic-bezier(0.4, 0, 0.2, 1);
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
-    html { scroll-behavior: smooth; font-size: 14px; }
+    :root {
+      --bg: #010308;
+      --bg1: #030713;
+      --bg2: #060C1A;
+      --bg3: #091124;
+      --border: rgba(22, 48, 100, 0.55);
+      --border2: rgba(35, 75, 145, 0.75);
+      --cyan: #00D4FF;
+      --cyan2: #00FFAA;
+      --cyan-dim: rgba(0, 212, 255, 0.08);
+      --cyan-glow: rgba(0, 212, 255, 0.25);
+      --text1: #DFEEFF;
+      --text2: #7A9DD0;
+      --text3: #43629A;
+      --display: 'Syne', sans-serif;
+      --body: 'DM Sans', sans-serif;
+      --mono: 'JetBrains Mono', monospace;
+      --r: 16px;
+      --rl: 24px;
+      --ease: cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 14px;
+    }
 
     body {
       font-family: var(--body);
@@ -44,1732 +57,3136 @@
       -webkit-font-smoothing: antialiased;
     }
 
-    ::selection { background: rgba(0,204,255,0.25); }
+    ::selection {
+      background: rgba(0, 204, 255, 0.25);
+    }
 
     /* ─── SCROLLBAR ─────────────────────────────── */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: var(--bg); }
-    ::-webkit-scrollbar-thumb { background: var(--border2); border-radius: 3px; }
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+      background: var(--bg);
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background: var(--border2);
+      border-radius: 3px;
+    }
 
     /* ─── UTILS ─────────────────────────────────── */
-    .container { max-width: 1200px; margin: 0 auto; padding: 0 32px; }
-    .tag {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: var(--mono); font-size: 0.65rem; letter-spacing: 0.12em;
-      text-transform: uppercase; color: var(--cyan);
-      background: var(--cyan-dim); border: 1px solid rgba(0,212,255,0.25);
-      padding: 4px 12px; border-radius: 100px;
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
     }
-    .tag::before { content:''; width:5px; height:5px; border-radius:50%; background:var(--cyan); animation: pulse-dot 2s ease infinite; }
-    @keyframes pulse-dot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(0.7)} }
+
+    .tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      background: var(--cyan-dim);
+      border: 1px solid rgba(0, 212, 255, 0.25);
+      padding: 4px 12px;
+      border-radius: 100px;
+    }
+
+    .tag::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--cyan);
+      animation: pulse-dot 2s ease infinite;
+    }
+
+    @keyframes pulse-dot {
+
+      0%,
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      50% {
+        opacity: 0.5;
+        transform: scale(0.7)
+      }
+    }
 
     .section-label {
-      font-family: var(--mono); font-size: 0.6rem; letter-spacing: 0.15em;
-      text-transform: uppercase; color: var(--cyan); margin-bottom: 12px;
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 12px;
     }
+
     .section-title {
-      font-family: var(--display); font-weight: 700;
+      font-family: var(--display);
+      font-weight: 700;
       font-size: clamp(1.6rem, 2.5vw, 2.4rem);
-      line-height: 1.15; color: #EAF2FF;
+      line-height: 1.15;
+      color: #EAF2FF;
       letter-spacing: -0.02em;
     }
+
     .gradient-text {
       background: linear-gradient(135deg, var(--cyan), var(--cyan2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      font-family: var(--body); font-size: 0.8rem; font-weight: 500;
-      padding: 10px 24px; border-radius: 10px; cursor: pointer;
-      transition: all 0.3s var(--ease); text-decoration: none; border: none; outline: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      font-family: var(--body);
+      font-size: 0.8rem;
+      font-weight: 500;
+      padding: 10px 24px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+      text-decoration: none;
+      border: none;
+      outline: none;
     }
+
     .btn-primary {
       background: linear-gradient(135deg, #00BFFF 0%, #00F0C0 100%);
-      color: #010308; box-shadow: 0 0 24px rgba(0,212,255,0.25);
+      color: #010308;
+      box-shadow: 0 0 24px rgba(0, 212, 255, 0.25);
     }
-    .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 0 35px rgba(0,212,255,0.45); }
+
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 0 35px rgba(0, 212, 255, 0.45);
+    }
+
     .btn-ghost {
-      background: transparent; color: var(--text1);
+      background: transparent;
+      color: var(--text1);
       border: 1px solid var(--border2);
       backdrop-filter: blur(8px);
     }
-    .btn-ghost:hover { border-color: var(--cyan); color: var(--cyan); background: var(--cyan-dim); transform: translateY(-3px); }
+
+    .btn-ghost:hover {
+      border-color: var(--cyan);
+      color: var(--cyan);
+      background: var(--cyan-dim);
+      transform: translateY(-3px);
+    }
 
     /* ─── REVEAL ANIMATIONS ─────────────────────── */
-    .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
-    .reveal.visible { opacity: 1; transform: translateY(0); }
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
-    .reveal-delay-6 { transition-delay: 0.6s; }
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 {
+      transition-delay: 0.1s;
+    }
+
+    .reveal-delay-2 {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-delay-3 {
+      transition-delay: 0.3s;
+    }
+
+    .reveal-delay-4 {
+      transition-delay: 0.4s;
+    }
+
+    .reveal-delay-5 {
+      transition-delay: 0.5s;
+    }
+
+    .reveal-delay-6 {
+      transition-delay: 0.6s;
+    }
 
     /* ─── NAV ────────────────────────────────────── */
     nav {
-      position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
       backdrop-filter: blur(32px) saturate(1.5);
       -webkit-backdrop-filter: blur(32px) saturate(1.5);
       background: rgba(1, 3, 8, 0.65);
       border-bottom: 1px solid var(--border);
       transition: all 0.3s var(--ease);
     }
+
     nav.scrolled {
       background: rgba(1, 3, 8, 0.85);
-      box-shadow: 0 4px 40px rgba(0,0,0,0.5);
+      box-shadow: 0 4px 40px rgba(0, 0, 0, 0.5);
     }
+
     .nav-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 32px;
-      height: 56px; display: flex; align-items: center; justify-content: space-between;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
+
     .nav-logo {
-      font-family: var(--display); font-weight: 800; font-size: 1.1rem;
-      color: #EAF2FF; text-decoration: none; letter-spacing: -0.02em;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #EAF2FF;
+      text-decoration: none;
+      letter-spacing: -0.02em;
     }
-    .nav-logo span { color: var(--cyan); }
-    .nav-links { display: flex; align-items: center; gap: 32px; list-style: none; }
+
+    .nav-logo span {
+      color: var(--cyan);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      list-style: none;
+    }
+
     .nav-links a {
-      font-size: 0.75rem; color: var(--text2); text-decoration: none;
-      transition: color 0.2s; letter-spacing: 0.02em; font-weight: 500;
+      font-size: 0.75rem;
+      color: var(--text2);
+      text-decoration: none;
+      transition: color 0.2s;
+      letter-spacing: 0.02em;
+      font-weight: 500;
     }
-    .nav-links a:hover { color: var(--text1); }
-    .nav-cta { display: flex; align-items: center; gap: 16px; }
-    .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; padding: 6px; }
-    .hamburger span { display: block; width: 20px; height: 2px; background: var(--text2); border-radius: 2px; transition: all 0.3s; }
+
+    .nav-links a:hover {
+      color: var(--text1);
+    }
+
+    .nav-cta {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 4px;
+      cursor: pointer;
+      padding: 6px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 20px;
+      height: 2px;
+      background: var(--text2);
+      border-radius: 2px;
+      transition: all 0.3s;
+    }
+
     .mobile-menu {
-      display: none; position: fixed; inset: 56px 0 0 0; z-index: 999;
-      background: rgba(1,3,8,0.95); backdrop-filter: blur(32px);
-      padding: 32px; flex-direction: column; gap: 20px;
+      display: none;
+      position: fixed;
+      inset: 56px 0 0 0;
+      z-index: 999;
+      background: rgba(1, 3, 8, 0.95);
+      backdrop-filter: blur(32px);
+      padding: 32px;
+      flex-direction: column;
+      gap: 20px;
     }
-    .mobile-menu.open { display: flex; }
-    .mobile-menu a { font-size: 0.95rem; color: var(--text1); text-decoration: none; padding: 10px 0; border-bottom: 1px solid var(--border); }
+
+    .mobile-menu.open {
+      display: flex;
+    }
+
+    .mobile-menu a {
+      font-size: 0.95rem;
+      color: var(--text1);
+      text-decoration: none;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border);
+    }
 
     @media (max-width: 768px) {
-      .nav-links, .nav-cta .btn-ghost { display: none; }
-      .hamburger { display: flex; }
-      .nav-cta .btn-primary { display: none; }
+
+      .nav-links,
+      .nav-cta .btn-ghost {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
+      }
+
+      .nav-cta .btn-primary {
+        display: none;
+      }
     }
 
     /* ─── HERO ───────────────────────────────────── */
     #hero {
-      position: relative; min-height: 100vh;
-      display: flex; align-items: center; justify-content: center;
-      overflow: hidden; padding: 120px 32px 80px;
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      padding: 120px 32px 80px;
     }
+
     #hero-canvas {
-      position: absolute; inset: 0; width: 80%; height: 80%;
+      position: absolute;
+      inset: 0;
+      width: 80%;
+      height: 80%;
       pointer-events: none;
     }
+
     .hero-glow {
-      position: absolute; inset: 0; pointer-events: none;
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
       background: radial-gradient(ellipse 80% 60% at 50% 50%,
-        rgba(0,150,220,0.05) 0%,
-        transparent 70%);
+          rgba(0, 150, 220, 0.05) 0%,
+          transparent 70%);
     }
+
     .hero-glow-bottom {
-      position: absolute; bottom: 0; left: 50%; transform: translateX(-50%);
-      width: 400px; height: 2px; pointer-events: none;
-      background: linear-gradient(90deg, transparent, rgba(0,204,255,0.4), transparent);
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 400px;
+      height: 2px;
+      pointer-events: none;
+      background: linear-gradient(90deg, transparent, rgba(0, 204, 255, 0.4), transparent);
     }
+
     .hero-content {
-      position: relative; z-index: 2; text-align: center;
-      max-width: 760px; margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto;
       background: rgba(3, 7, 18, 0.4);
       backdrop-filter: blur(16px);
       padding: 56px 40px;
       border-radius: 32px;
-      border: 1px solid rgba(0,212,255,0.08);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+      border: 1px solid rgba(0, 212, 255, 0.08);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
     }
-    .hero-tag { margin-bottom: 24px; }
+
+    .hero-tag {
+      margin-bottom: 24px;
+    }
+
     .hero-headline {
-      font-family: var(--display); font-weight: 800;
+      font-family: var(--display);
+      font-weight: 800;
       font-size: clamp(1.6rem, 3.5vw, 2.8rem);
-      line-height: 1.1; letter-spacing: -0.03em;
-      color: #EAF2FF; margin-bottom: 24px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: #EAF2FF;
+      margin-bottom: 24px;
     }
+
     .hero-rotating {
-      display: block; position: relative;
-      height: 1.15em; /* single-line only — first line is static */
+      display: block;
+      position: relative;
+      height: 1.15em;
+      /* single-line only — first line is static */
     }
+
     .hero-rotating-item {
-      position: absolute; width: 100%; left: 0; top: 0;
+      position: absolute;
+      width: 100%;
+      left: 0;
+      top: 0;
       transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
-      opacity: 0; transform: translateY(16px); white-space: nowrap;
+      opacity: 0;
+      transform: translateY(16px);
+      white-space: nowrap;
     }
-    .hero-rotating-item.active { opacity: 1; transform: translateY(0); }
+
+    .hero-rotating-item.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
     .hero-sub {
       font-size: clamp(0.85rem, 1.2vw, 0.95rem);
-      color: var(--text2); max-width: 580px; margin: 0 auto 36px;
-      line-height: 1.8; font-weight: 400;
+      color: var(--text2);
+      max-width: 580px;
+      margin: 0 auto 36px;
+      line-height: 1.8;
+      font-weight: 400;
     }
-    .hero-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    .hero-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
     .hero-scroll {
-      position: absolute; bottom: 32px; left: 50%; transform: translateX(-50%);
-      display: flex; flex-direction: column; align-items: center; gap: 8px;
-      color: var(--text3); font-family: var(--mono); font-size: 0.55rem; letter-spacing: 0.15em;
-      text-transform: uppercase; opacity: 0.7;
+      position: absolute;
+      bottom: 32px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      color: var(--text3);
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      opacity: 0.7;
     }
+
     .hero-scroll-line {
-      width: 1px; height: 40px;
+      width: 1px;
+      height: 40px;
       background: linear-gradient(to bottom, var(--text3), transparent);
       animation: scroll-line 2s ease-in-out infinite;
     }
+
     @keyframes scroll-line {
-      0%,100%{opacity:0;transform:scaleY(0);transform-origin:top}
-      50%{opacity:1;transform:scaleY(1);transform-origin:top}
+
+      0%,
+      100% {
+        opacity: 0;
+        transform: scaleY(0);
+        transform-origin: top
+      }
+
+      50% {
+        opacity: 1;
+        transform: scaleY(1);
+        transform-origin: top
+      }
     }
 
     /* ─── PROBLEM ────────────────────────────────── */
-    #problem { padding: 90px 0; background: var(--bg); }
+    #problem {
+      padding: 90px 0;
+      background: var(--bg);
+    }
+
     .problem-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 1px; background: var(--border);
-      border: 1px solid var(--border); border-radius: var(--rl);
-      overflow: hidden; margin: 48px 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--rl);
+      overflow: hidden;
+      margin: 48px 0;
     }
+
     .problem-source {
-      background: var(--bg1); padding: 24px 20px;
-      display: flex; flex-direction: column; align-items: center; gap: 10px;
-      transition: all 0.3s var(--ease); cursor: default; text-align: center;
+      background: var(--bg1);
+      padding: 24px 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.3s var(--ease);
+      cursor: default;
+      text-align: center;
     }
-    .problem-source:hover { background: var(--bg2); transform: scale(1.01); z-index: 1; box-shadow: 0 0 20px rgba(0,0,0,0.5); }
+
+    .problem-source:hover {
+      background: var(--bg2);
+      transform: scale(1.01);
+      z-index: 1;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    }
+
     .problem-source-icon {
-      width: 36px; height: 36px; border-radius: 10px;
-      background: var(--cyan-dim); border: 1px solid rgba(0,212,255,0.2);
-      display: flex; align-items: center; justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: var(--cyan-dim);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .problem-source-icon svg { width: 16px; height: 16px; stroke: var(--cyan); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-    .problem-source-name { font-size: 0.7rem; font-weight: 500; color: var(--text2); font-family: var(--mono); }
+
+    .problem-source-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .problem-source-name {
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: var(--text2);
+      font-family: var(--mono);
+    }
+
     .problem-text {
-      display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 16px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 16px;
     }
-    .problem-text p { color: var(--text2); line-height: 1.8; font-size: 0.85rem; }
+
+    .problem-text p {
+      color: var(--text2);
+      line-height: 1.8;
+      font-size: 0.85rem;
+    }
+
     .problem-pain {
-      display: flex; flex-direction: column; gap: 12px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
+
     .problem-pain-item {
-      display: flex; align-items: flex-start; gap: 12px;
-      padding: 14px 16px; background: var(--bg1);
-      border: 1px solid var(--border); border-radius: var(--r);
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      padding: 14px 16px;
+      background: var(--bg1);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
     }
-    .pain-dot { width: 6px; height: 6px; border-radius: 50%; background: rgba(255,100,100,0.7); flex-shrink: 0; margin-top: 6px; }
-    .problem-pain-item p { font-size: 0.8rem; color: var(--text2); line-height: 1.6; }
+
+    .pain-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: rgba(255, 100, 100, 0.7);
+      flex-shrink: 0;
+      margin-top: 6px;
+    }
+
+    .problem-pain-item p {
+      font-size: 0.8rem;
+      color: var(--text2);
+      line-height: 1.6;
+    }
 
     @media (max-width: 768px) {
-      .problem-grid { grid-template-columns: repeat(2, 1fr); }
-      .problem-text { grid-template-columns: 1fr; }
+      .problem-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .problem-text {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* ─── SOLUTION / ARCHITECTURE ────────────────── */
-    #solution { padding: 90px 0; background: var(--bg1); position: relative; }
+    #solution {
+      padding: 90px 0;
+      background: var(--bg1);
+      position: relative;
+    }
+
     #solution::before {
-      content:''; position:absolute; inset:0; pointer-events:none;
-      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0,212,255,0.05), transparent);
+      content: '';
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      background: radial-gradient(ellipse 60% 50% at 50% 0%, rgba(0, 212, 255, 0.05), transparent);
     }
+
     .arch-flow {
-      display: flex; flex-direction: column; align-items: center;
-      gap: 0; max-width: 640px; margin: 48px auto 0; position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0;
+      max-width: 640px;
+      margin: 48px auto 0;
+      position: relative;
     }
+
     .arch-node {
-      width: 100%; background: var(--bg2);
-      border: 1px solid var(--border); border-radius: var(--r);
-      padding: 14px 20px; display: flex; align-items: center; gap: 16px;
-      transition: all 0.3s var(--ease); position: relative; z-index: 1;
+      width: 100%;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      transition: all 0.3s var(--ease);
+      position: relative;
+      z-index: 1;
       cursor: pointer;
     }
+
     .arch-node:hover {
-      border-color: rgba(0,212,255,0.5); background: var(--bg3);
+      border-color: rgba(0, 212, 255, 0.5);
+      background: var(--bg3);
       transform: scale(1.02);
-      box-shadow: 0 0 24px rgba(0,212,255,0.12);
+      box-shadow: 0 0 24px rgba(0, 212, 255, 0.12);
     }
+
     .arch-node-num {
-      font-family: var(--mono); font-size: 0.55rem; color: var(--cyan);
-      background: var(--cyan-dim); border: 1px solid rgba(0,212,255,0.2);
-      width: 24px; height: 24px; border-radius: 6px;
-      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      color: var(--cyan);
+      background: var(--cyan-dim);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
     }
-    .arch-node-label { font-family: var(--display); font-weight: 600; font-size: 0.85rem; color: var(--text1); flex: 1; }
-    .arch-node-desc { font-size: 0.75rem; color: var(--text3); margin-top: 2px; line-height: 1.4; }
-    .arch-node-icon { flex-shrink: 0; opacity: 0.6; }
+
+    .arch-node-label {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 0.85rem;
+      color: var(--text1);
+      flex: 1;
+    }
+
+    .arch-node-desc {
+      font-size: 0.75rem;
+      color: var(--text3);
+      margin-top: 2px;
+      line-height: 1.4;
+    }
+
+    .arch-node-icon {
+      flex-shrink: 0;
+      opacity: 0.6;
+    }
+
     .arch-connector {
-      width: 2px; height: 24px; position: relative; overflow: hidden;
-      background: var(--border2); z-index: 0;
+      width: 2px;
+      height: 24px;
+      position: relative;
+      overflow: hidden;
+      background: var(--border2);
+      z-index: 0;
     }
+
     .arch-connector::after {
-      content: ''; position: absolute; top: -100%; width: 100%; height: 100%;
+      content: '';
+      position: absolute;
+      top: -100%;
+      width: 100%;
+      height: 100%;
       background: linear-gradient(to bottom, transparent, var(--cyan2), transparent);
       animation: flow-down 1.5s linear infinite;
     }
-    @keyframes flow-down { to { top: 200%; } }
+
+    @keyframes flow-down {
+      to {
+        top: 200%;
+      }
+    }
+
     .arch-arrow {
-      width: 6px; height: 6px; border-right: 2px solid var(--border2); border-bottom: 2px solid var(--border2);
-      transform: rotate(45deg); margin: -3px 0;
+      width: 6px;
+      height: 6px;
+      border-right: 2px solid var(--border2);
+      border-bottom: 2px solid var(--border2);
+      transform: rotate(45deg);
+      margin: -3px 0;
     }
 
     /* ─── SERVICES ───────────────────────────────── */
-    #services { padding: 90px 0; }
+    #services {
+      padding: 90px 0;
+    }
+
     .services-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 16px; margin-top: 48px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      margin-top: 48px;
     }
+
     .service-card {
-      background: var(--bg1); border: 1px solid var(--border);
-      border-radius: var(--rl); padding: 28px 24px;
-      transition: all 0.35s var(--ease); position: relative; overflow: hidden;
+      background: var(--bg1);
+      border: 1px solid var(--border);
+      border-radius: var(--rl);
+      padding: 28px 24px;
+      transition: all 0.35s var(--ease);
+      position: relative;
+      overflow: hidden;
     }
+
     .service-card::before {
-      content: ''; position: absolute; inset: 0; border-radius: var(--rl);
-      background: linear-gradient(135deg, rgba(0,212,255,0.06) 0%, transparent 60%);
-      opacity: 0; transition: opacity 0.35s;
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: var(--rl);
+      background: linear-gradient(135deg, rgba(0, 212, 255, 0.06) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity 0.35s;
     }
-    .service-card:hover::before { opacity: 1; }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
     .service-card:hover {
-      border-color: rgba(0,212,255,0.4); transform: translateY(-4px);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 30px rgba(0,212,255,0.08);
+      border-color: rgba(0, 212, 255, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 212, 255, 0.08);
       background: var(--bg2);
     }
+
     .service-icon {
-      width: 44px; height: 44px; border-radius: 12px;
-      background: var(--cyan-dim); border: 1px solid rgba(0,212,255,0.2);
-      display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      background: var(--cyan-dim);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 20px;
     }
-    .service-icon svg { width: 20px; height: 20px; stroke: var(--cyan); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+
+    .service-icon svg {
+      width: 20px;
+      height: 20px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
     .service-num {
-      position: absolute; top: 20px; right: 20px;
-      font-family: var(--mono); font-size: 0.55rem; color: var(--text3);
+      position: absolute;
+      top: 20px;
+      right: 20px;
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      color: var(--text3);
     }
-    .service-title { font-family: var(--display); font-weight: 700; font-size: 0.95rem; color: #EAF2FF; margin-bottom: 8px; }
-    .service-desc { font-size: 0.8rem; color: var(--text2); line-height: 1.6; }
 
-    @media (max-width: 900px) { .services-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 580px) { .services-grid { grid-template-columns: 1fr; } }
+    .service-title {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #EAF2FF;
+      margin-bottom: 8px;
+    }
 
-    /* ─── WHY OBSYGNAL ───────────────────────────── */
-    #why { padding: 90px 0; background: var(--bg1); position: relative; }
-    #why::after {
-      content:''; position:absolute; bottom:0; left:0; right:0; height:1px;
-      background: linear-gradient(90deg, transparent, var(--border2), transparent);
+    .service-desc {
+      font-size: 0.8rem;
+      color: var(--text2);
+      line-height: 1.6;
     }
-    .why-pillars {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 20px; margin-top: 48px;
-    }
-    .why-pillar {
-      padding: 28px 24px; background: var(--bg2); border: 1px solid var(--border);
-      border-radius: var(--rl); position: relative; transition: all 0.3s var(--ease);
-    }
-    .why-pillar:hover { background: var(--bg3); border-color: rgba(0,212,255,0.3); transform: translateY(-4px); }
-    .why-pillar::before {
-      content: ''; position: absolute; top: 0; left: 32px; right: 32px; height: 2px;
-      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
-      border-radius: 2px; opacity: 0.7; transition: opacity 0.3s;
-    }
-    .why-pillar:hover::before { opacity: 1; box-shadow: 0 0 10px var(--cyan); }
-    .why-pillar-icon {
-      width: 40px; height: 40px; border-radius: 12px;
-      background: var(--cyan-dim); border: 1px solid rgba(0,212,255,0.2);
-      display: flex; align-items: center; justify-content: center; margin-bottom: 16px;
-    }
-    .why-pillar-icon svg { width: 18px; height: 18px; stroke: var(--cyan); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-    .why-pillar-title { font-family: var(--display); font-weight: 700; font-size: 0.95rem; color: #EAF2FF; margin-bottom: 8px; }
-    .why-pillar-desc { font-size: 0.8rem; color: var(--text2); line-height: 1.6; }
-
-    .counters {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 1px; background: var(--border); border: 1px solid var(--border);
-      border-radius: var(--rl); overflow: hidden; margin-top: 48px;
-    }
-    .counter-item {
-      background: var(--bg2); padding: 28px 20px; text-align: center; transition: background 0.3s;
-    }
-    .counter-item:hover { background: var(--bg3); }
-    .counter-value {
-      font-family: var(--display); font-weight: 800;
-      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
-      background: linear-gradient(135deg, var(--cyan), var(--cyan2));
-      -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-      line-height: 1; margin-bottom: 6px;
-    }
-    .counter-label { font-size: 0.7rem; color: var(--text2); font-family: var(--mono); letter-spacing: 0.05em; }
-
-    @media (max-width: 900px) { .why-pillars { grid-template-columns: 1fr; } .counters { grid-template-columns: repeat(2, 1fr); } }
-
-    /* ─── CAPABILITIES ───────────────────────────── */
-    #capabilities { padding: 90px 0; }
-    .capabilities-grid {
-      display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 12px; margin-top: 48px;
-    }
-    .cap-card {
-      background: var(--bg1); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 16px; cursor: pointer;
-      transition: all 0.3s var(--ease);
-    }
-    .cap-card:hover, .cap-card.open {
-      border-color: rgba(0,212,255,0.4); background: var(--bg2);
-      box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-    }
-    .cap-card-header {
-      display: flex; align-items: center; justify-content: space-between; gap: 12px;
-    }
-    .cap-card-title {
-      font-family: var(--display); font-weight: 600; font-size: 0.8rem;
-      color: var(--text1); flex: 1;
-    }
-    .cap-card-tag {
-      width: 20px; height: 20px; border-radius: 6px;
-      background: var(--cyan-dim); flex-shrink: 0;
-      display: flex; align-items: center; justify-content: center;
-      transition: transform 0.3s; border: 1px solid rgba(0,212,255,0.1);
-    }
-    .cap-card.open .cap-card-tag { transform: rotate(45deg); background: rgba(0,212,255,0.2); border-color: rgba(0,212,255,0.4); }
-    .cap-card-tag svg { width: 8px; height: 8px; stroke: var(--cyan); fill: none; stroke-width: 2; }
-    .cap-card-body {
-      max-height: 0; overflow: hidden;
-      transition: max-height 0.4s var(--ease), opacity 0.4s;
-      opacity: 0; font-size: 0.75rem; color: var(--text2); line-height: 1.6;
-    }
-    .cap-card.open .cap-card-body { max-height: 200px; opacity: 1; margin-top: 10px; }
-
-    @media (max-width: 900px) { .capabilities-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 520px) { .capabilities-grid { grid-template-columns: 1fr; } }
-
-    /* ─── INSIGHTS ───────────────────────────────── */
-    #insights { padding: 90px 0; background: var(--bg1); }
-    .insights-grid {
-      display: grid; grid-template-columns: repeat(3, 1fr);
-      gap: 20px; margin-top: 48px;
-    }
-    .insight-card {
-      background: var(--bg2); border: 1px solid var(--border);
-      border-radius: var(--rl); padding: 24px;
-      transition: all 0.3s var(--ease); cursor: pointer; text-decoration: none;
-      display: block; color: inherit; position: relative; overflow: hidden;
-    }
-    .insight-card:hover { background: var(--bg3); border-color: rgba(0,212,255,0.4); transform: translateY(-4px); box-shadow: 0 10px 30px rgba(0,0,0,0.4); }
-    .insight-meta {
-      display: flex; align-items: center; justify-content: space-between;
-      margin-bottom: 16px;
-    }
-    .insight-tag {
-      font-family: var(--mono); font-size: 0.55rem; text-transform: uppercase;
-      letter-spacing: 0.1em; color: var(--cyan);
-      background: var(--cyan-dim); padding: 4px 10px; border-radius: 100px; border: 1px solid rgba(0,212,255,0.15);
-    }
-    .insight-read { font-size: 0.65rem; color: var(--text3); font-family: var(--mono); }
-    .insight-title {
-      font-family: var(--display); font-weight: 700; font-size: 0.9rem;
-      color: #EAF2FF; margin-bottom: 10px; line-height: 1.4;
-    }
-    .insight-excerpt { font-size: 0.75rem; color: var(--text2); line-height: 1.6; }
-    .insight-arrow {
-      display: inline-flex; align-items: center; gap: 6px; margin-top: 16px;
-      font-size: 0.75rem; color: var(--cyan); font-family: var(--mono);
-      transition: gap 0.2s;
-    }
-    .insight-card:hover .insight-arrow { gap: 10px; }
-
-    @media (max-width: 900px) { .insights-grid { grid-template-columns: 1fr 1fr; } }
-    @media (max-width: 580px) { .insights-grid { grid-template-columns: 1fr; } }
-
-    /* ─── ABOUT ──────────────────────────────────── */
-    #about { padding: 90px 0; }
-    .about-intro {
-      max-width: 680px; font-size: 0.95rem; color: var(--text2);
-      line-height: 1.8; margin-bottom: 48px;
-    }
-    .team-grid {
-      display: flex; gap: 12px; margin-bottom: 32px;
-      justify-content: center; align-items: stretch; flex-wrap: wrap;
-    }
-    .team-card {
-      background: var(--bg1); border: 1px solid var(--border);
-      border-radius: var(--r); padding: 16px; text-align: center;
-      transition: all 0.3s var(--ease); flex: 1 1 140px; max-width: 180px;
-    }
-    .team-card:hover { border-color: rgba(0,212,255,0.3); transform: translateY(-4px); background: var(--bg2); box-shadow: 0 8px 24px rgba(0,0,0,0.3); }
-    .team-avatar {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: var(--bg3); border: 2px solid var(--border2);
-      margin: 0 auto 12px; display: flex; align-items: center; justify-content: center;
-      font-family: var(--display); font-weight: 700; font-size: 0.85rem;
-      background: linear-gradient(135deg, var(--bg3), var(--bg2));
-      color: var(--cyan); box-shadow: 0 0 15px rgba(0,212,255,0.1);
-    }
-    .team-name { font-family: var(--display); font-weight: 700; font-size: 0.85rem; color: #EAF2FF; margin-bottom: 2px; }
-    .team-role { font-size: 0.65rem; color: var(--cyan); font-family: var(--mono); margin-bottom: 8px; }
-    .team-bio { display: none; }
-    .team-linkedin {
-      display: inline-flex; align-items: center; gap: 6px;
-      font-size: 0.65rem; color: var(--text3); text-decoration: none;
-      font-family: var(--mono); transition: color 0.2s;
-    }
-    .team-linkedin:hover { color: var(--cyan); }
-
-    .philosophy {
-      background: var(--bg1); border: 1px solid var(--border);
-      border-radius: var(--rl); padding: 48px 56px;
-    }
-    .philosophy-title { font-family: var(--display); font-weight: 700; font-size: 1.2rem; color: #EAF2FF; margin-bottom: 28px; }
-    .philosophy-items { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
-    .philosophy-item {
-      display: flex; align-items: flex-start; gap: 14px;
-      padding: 16px; background: var(--bg2); border: 1px solid var(--border); border-radius: var(--r);
-      transition: all 0.3s;
-    }
-    .philosophy-item:hover { border-color: rgba(0,212,255,0.25); background: var(--bg3); }
-    .philosophy-item-icon {
-      width: 32px; height: 32px; border-radius: 8px; flex-shrink: 0;
-      background: var(--cyan-dim); border: 1px solid rgba(0,212,255,0.2);
-      display: flex; align-items: center; justify-content: center;
-    }
-    .philosophy-item-icon svg { width: 14px; height: 14px; stroke: var(--cyan); fill: none; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
-    .philosophy-item p { font-size: 0.8rem; color: var(--text2); line-height: 1.6; padding-top: 2px; }
 
     @media (max-width: 900px) {
-      .team-grid { flex-wrap: wrap; gap: 12px; }
-      .team-card { flex: 1 1 calc(33% - 12px); max-width: none; }
-      .philosophy-items { grid-template-columns: 1fr; }
-      .philosophy { padding: 32px 24px; }
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 580px) {
+      .services-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ─── WHY OBSYGNAL ───────────────────────────── */
+    #why {
+      padding: 90px 0;
+      background: var(--bg1);
+      position: relative;
+    }
+
+    #why::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--border2), transparent);
+    }
+
+    .why-pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .why-pillar {
+      padding: 28px 24px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--rl);
+      position: relative;
+      transition: all 0.3s var(--ease);
+    }
+
+    .why-pillar:hover {
+      background: var(--bg3);
+      border-color: rgba(0, 212, 255, 0.3);
+      transform: translateY(-4px);
+    }
+
+    .why-pillar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 32px;
+      right: 32px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--cyan), transparent);
+      border-radius: 2px;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .why-pillar:hover::before {
+      opacity: 1;
+      box-shadow: 0 0 10px var(--cyan);
+    }
+
+    .why-pillar-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--cyan-dim);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 16px;
+    }
+
+    .why-pillar-icon svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .why-pillar-title {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: #EAF2FF;
+      margin-bottom: 8px;
+    }
+
+    .why-pillar-desc {
+      font-size: 0.8rem;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+
+    .counters {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+      border-radius: var(--rl);
+      overflow: hidden;
+      margin-top: 48px;
+    }
+
+    .counter-item {
+      background: var(--bg2);
+      padding: 28px 20px;
+      text-align: center;
+      transition: background 0.3s;
+    }
+
+    .counter-item:hover {
+      background: var(--bg3);
+    }
+
+    .counter-value {
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: clamp(1.5rem, 2.5vw, 2.2rem);
+      background: linear-gradient(135deg, var(--cyan), var(--cyan2));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    .counter-label {
+      font-size: 0.7rem;
+      color: var(--text2);
+      font-family: var(--mono);
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 900px) {
+      .why-pillars {
+        grid-template-columns: 1fr;
+      }
+
+      .counters {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    /* ─── CAPABILITIES ───────────────────────────── */
+    #capabilities {
+      padding: 90px 0;
+    }
+
+    .capabilities-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 12px;
+      margin-top: 48px;
+    }
+
+    .cap-card {
+      background: var(--bg1);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 16px;
+      cursor: pointer;
+      transition: all 0.3s var(--ease);
+    }
+
+    .cap-card:hover,
+    .cap-card.open {
+      border-color: rgba(0, 212, 255, 0.4);
+      background: var(--bg2);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    }
+
+    .cap-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .cap-card-title {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: var(--text1);
+      flex: 1;
+    }
+
+    .cap-card-tag {
+      width: 20px;
+      height: 20px;
+      border-radius: 6px;
+      background: var(--cyan-dim);
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: transform 0.3s;
+      border: 1px solid rgba(0, 212, 255, 0.1);
+    }
+
+    .cap-card.open .cap-card-tag {
+      transform: rotate(45deg);
+      background: rgba(0, 212, 255, 0.2);
+      border-color: rgba(0, 212, 255, 0.4);
+    }
+
+    .cap-card-tag svg {
+      width: 8px;
+      height: 8px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 2;
+    }
+
+    .cap-card-body {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s var(--ease), opacity 0.4s;
+      opacity: 0;
+      font-size: 0.75rem;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+
+    .cap-card.open .cap-card-body {
+      max-height: 200px;
+      opacity: 1;
+      margin-top: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .capabilities-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+      .capabilities-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ─── INSIGHTS ───────────────────────────────── */
+    #insights {
+      padding: 90px 0;
+      background: var(--bg1);
+    }
+
+    .insights-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+      margin-top: 48px;
+    }
+
+    .insight-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--rl);
+      padding: 24px;
+      transition: all 0.3s var(--ease);
+      cursor: pointer;
+      text-decoration: none;
+      display: block;
+      color: inherit;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .insight-card:hover {
+      background: var(--bg3);
+      border-color: rgba(0, 212, 255, 0.4);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    .insight-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 16px;
+    }
+
+    .insight-tag {
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--cyan);
+      background: var(--cyan-dim);
+      padding: 4px 10px;
+      border-radius: 100px;
+      border: 1px solid rgba(0, 212, 255, 0.15);
+    }
+
+    .insight-read {
+      font-size: 0.65rem;
+      color: var(--text3);
+      font-family: var(--mono);
+    }
+
+    .insight-title {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 0.9rem;
+      color: #EAF2FF;
+      margin-bottom: 10px;
+      line-height: 1.4;
+    }
+
+    .insight-excerpt {
+      font-size: 0.75rem;
+      color: var(--text2);
+      line-height: 1.6;
+    }
+
+    .insight-arrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 16px;
+      font-size: 0.75rem;
+      color: var(--cyan);
+      font-family: var(--mono);
+      transition: gap 0.2s;
+    }
+
+    .insight-card:hover .insight-arrow {
+      gap: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .insights-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 580px) {
+      .insights-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ─── ABOUT ──────────────────────────────────── */
+    #about {
+      padding: 90px 0;
+    }
+
+    .about-intro {
+      max-width: 680px;
+      font-size: 0.95rem;
+      color: var(--text2);
+      line-height: 1.8;
+      margin-bottom: 48px;
+    }
+
+    .team-grid {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 32px;
+      justify-content: center;
+      align-items: stretch;
+      flex-wrap: wrap;
+    }
+
+    .team-card {
+      background: var(--bg1);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 16px;
+      text-align: center;
+      transition: all 0.3s var(--ease);
+      flex: 1 1 140px;
+      max-width: 180px;
+    }
+
+    .team-card:hover {
+      border-color: rgba(0, 212, 255, 0.3);
+      transform: translateY(-4px);
+      background: var(--bg2);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    .team-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--bg3);
+      border: 2px solid var(--border2);
+      margin: 0 auto 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      background: linear-gradient(135deg, var(--bg3), var(--bg2));
+      color: var(--cyan);
+      box-shadow: 0 0 15px rgba(0, 212, 255, 0.1);
+    }
+
+    .team-name {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #EAF2FF;
+      margin-bottom: 2px;
+    }
+
+    .team-role {
+      font-size: 0.65rem;
+      color: var(--cyan);
+      font-family: var(--mono);
+      margin-bottom: 8px;
+    }
+
+    .team-bio {
+      display: none;
+    }
+
+    .team-linkedin {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.65rem;
+      color: var(--text3);
+      text-decoration: none;
+      font-family: var(--mono);
+      transition: color 0.2s;
+    }
+
+    .team-linkedin:hover {
+      color: var(--cyan);
+    }
+
+    .philosophy {
+      background: var(--bg1);
+      border: 1px solid var(--border);
+      border-radius: var(--rl);
+      padding: 48px 56px;
+    }
+
+    .philosophy-title {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #EAF2FF;
+      margin-bottom: 28px;
+    }
+
+    .philosophy-items {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 20px;
+    }
+
+    .philosophy-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      padding: 16px;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      transition: all 0.3s;
+    }
+
+    .philosophy-item:hover {
+      border-color: rgba(0, 212, 255, 0.25);
+      background: var(--bg3);
+    }
+
+    .philosophy-item-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      background: var(--cyan-dim);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .philosophy-item-icon svg {
+      width: 14px;
+      height: 14px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .philosophy-item p {
+      font-size: 0.8rem;
+      color: var(--text2);
+      line-height: 1.6;
+      padding-top: 2px;
+    }
+
+    @media (max-width: 900px) {
+      .team-grid {
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+
+      .team-card {
+        flex: 1 1 calc(33% - 12px);
+        max-width: none;
+      }
+
+      .philosophy-items {
+        grid-template-columns: 1fr;
+      }
+
+      .philosophy {
+        padding: 32px 24px;
+      }
     }
 
     /* ─── PROCESS ────────────────────────────────── */
-    #process { padding: 90px 0; background: var(--bg1); position: relative; }
-    .process-timeline {
-      display: flex; gap: 0; margin-top: 56px;
+    #process {
+      padding: 90px 0;
+      background: var(--bg1);
       position: relative;
     }
+
+    .process-timeline {
+      display: flex;
+      gap: 0;
+      margin-top: 56px;
+      position: relative;
+    }
+
     .process-timeline::before {
-      content: ''; position: absolute; top: 24px; left: 5%;
-      right: 5%; height: 2px; background: linear-gradient(90deg, transparent, var(--border2), transparent);
+      content: '';
+      position: absolute;
+      top: 24px;
+      left: 5%;
+      right: 5%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--border2), transparent);
     }
+
     .process-step {
-      flex: 1; display: flex; flex-direction: column; align-items: center;
-      text-align: center; padding: 0 16px; position: relative;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 16px;
+      position: relative;
     }
+
     .process-num {
-      width: 48px; height: 48px; border-radius: 50%;
-      background: var(--bg2); border: 2px solid var(--border2);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--display); font-weight: 700; font-size: 0.95rem;
-      color: var(--text1); margin-bottom: 16px; position: relative; z-index: 1;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--bg2);
+      border: 2px solid var(--border2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--text1);
+      margin-bottom: 16px;
+      position: relative;
+      z-index: 1;
       transition: all 0.3s var(--ease);
     }
+
     .process-step:hover .process-num {
-      border-color: var(--cyan); color: var(--cyan);
-      box-shadow: 0 0 24px rgba(0,212,255,0.3); background: var(--bg3); transform: scale(1.1);
+      border-color: var(--cyan);
+      color: var(--cyan);
+      box-shadow: 0 0 24px rgba(0, 212, 255, 0.3);
+      background: var(--bg3);
+      transform: scale(1.1);
     }
+
     .process-step-label {
-      font-family: var(--mono); font-size: 0.55rem; text-transform: uppercase;
-      letter-spacing: 0.12em; color: var(--cyan); margin-bottom: 6px;
+      font-family: var(--mono);
+      font-size: 0.55rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--cyan);
+      margin-bottom: 6px;
     }
-    .process-step-title { font-family: var(--display); font-weight: 700; font-size: 0.85rem; color: #EAF2FF; margin-bottom: 6px; }
-    .process-step-desc { font-size: 0.75rem; color: var(--text2); line-height: 1.6; }
+
+    .process-step-title {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 0.85rem;
+      color: #EAF2FF;
+      margin-bottom: 6px;
+    }
+
+    .process-step-desc {
+      font-size: 0.75rem;
+      color: var(--text2);
+      line-height: 1.6;
+    }
 
     @media (max-width: 768px) {
-      .process-timeline { flex-direction: column; gap: 32px; }
-      .process-timeline::before { display: none; }
+      .process-timeline {
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .process-timeline::before {
+        display: none;
+      }
     }
 
     /* ─── FINAL CTA ──────────────────────────────── */
     #final-cta {
-      padding: 120px 32px; position: relative; overflow: hidden;
+      padding: 120px 32px;
+      position: relative;
+      overflow: hidden;
       text-align: center;
     }
+
     #cta-canvas {
-      position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.5;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0.5;
     }
-    .cta-content { position: relative; z-index: 2; max-width: 640px; margin: 0 auto; background: rgba(3,7,18,0.5); backdrop-filter: blur(12px); padding: 48px; border-radius: 24px; border: 1px solid rgba(0,212,255,0.1); box-shadow: 0 20px 40px rgba(0,0,0,0.4); }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+      margin: 0 auto;
+      background: rgba(3, 7, 18, 0.5);
+      backdrop-filter: blur(12px);
+      padding: 48px;
+      border-radius: 24px;
+      border: 1px solid rgba(0, 212, 255, 0.1);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    }
+
     .cta-headline {
-      font-family: var(--display); font-weight: 800;
+      font-family: var(--display);
+      font-weight: 800;
       font-size: clamp(1.8rem, 4vw, 3.2rem);
-      line-height: 1.1; letter-spacing: -0.03em;
-      color: #EAF2FF; margin-bottom: 20px;
+      line-height: 1.1;
+      letter-spacing: -0.03em;
+      color: #EAF2FF;
+      margin-bottom: 20px;
     }
-    .cta-sub { font-size: 0.95rem; color: var(--text2); margin-bottom: 36px; line-height: 1.8; font-weight: 400; }
-    .cta-btns { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+
+    .cta-sub {
+      font-size: 0.95rem;
+      color: var(--text2);
+      margin-bottom: 36px;
+      line-height: 1.8;
+      font-weight: 400;
+    }
+
+    .cta-btns {
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
     .cta-divider {
-      position: absolute; top: 0; left: 50%; transform: translateX(-50%);
-      width: 300px; height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0,212,255,0.5), transparent);
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 212, 255, 0.5), transparent);
     }
 
     /* ─── CONTACT ────────────────────────────────── */
-    #contact { padding: 90px 0; background: var(--bg1); }
+    #contact {
+      padding: 90px 0;
+      background: var(--bg1);
+    }
+
     .contact-wrapper {
-      display: grid; grid-template-columns: 1fr 1.4fr; gap: 64px; margin-top: 48px;
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 64px;
+      margin-top: 48px;
     }
-    .contact-info h3 { font-family: var(--display); font-weight: 700; font-size: 1.2rem; color: #EAF2FF; margin-bottom: 12px; }
-    .contact-info p { font-size: 0.85rem; color: var(--text2); line-height: 1.7; margin-bottom: 24px; }
+
+    .contact-info h3 {
+      font-family: var(--display);
+      font-weight: 700;
+      font-size: 1.2rem;
+      color: #EAF2FF;
+      margin-bottom: 12px;
+    }
+
+    .contact-info p {
+      font-size: 0.85rem;
+      color: var(--text2);
+      line-height: 1.7;
+      margin-bottom: 24px;
+    }
+
     .contact-detail {
-      display: flex; align-items: center; gap: 12px; margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 12px;
     }
+
     .contact-detail-icon {
-      width: 36px; height: 36px; border-radius: 8px; flex-shrink: 0;
-      background: var(--cyan-dim); border: 1px solid rgba(0,212,255,0.2);
-      display: flex; align-items: center; justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      flex-shrink: 0;
+      background: var(--cyan-dim);
+      border: 1px solid rgba(0, 212, 255, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
-    .contact-detail-icon svg { width: 16px; height: 16px; stroke: var(--cyan); fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-    .contact-detail span { font-size: 0.8rem; color: var(--text2); }
-    .contact-detail a { color: var(--cyan); text-decoration: none; font-size: 0.8rem; }
+
+    .contact-detail-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--cyan);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .contact-detail span {
+      font-size: 0.8rem;
+      color: var(--text2);
+    }
+
+    .contact-detail a {
+      color: var(--cyan);
+      text-decoration: none;
+      font-size: 0.8rem;
+    }
 
     .calendly-placeholder {
-      background: var(--bg2); border: 1px dashed var(--border2);
-      border-radius: var(--r); padding: 24px; text-align: center;
+      background: var(--bg2);
+      border: 1px dashed var(--border2);
+      border-radius: var(--r);
+      padding: 24px;
+      text-align: center;
       margin-top: 24px;
     }
-    .calendly-placeholder p { font-size: 0.75rem; color: var(--text3); font-family: var(--mono); }
-    .calendly-placeholder strong { display: block; font-size: 0.8rem; color: var(--text2); margin-bottom: 6px; }
 
-    .contact-form { display: flex; flex-direction: column; gap: 14px; background: var(--bg2); padding: 32px; border-radius: var(--r); border: 1px solid var(--border); box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
-    .form-group { display: flex; flex-direction: column; gap: 6px; }
-    .form-group label { font-size: 0.65rem; font-family: var(--mono); letter-spacing: 0.05em; color: var(--text2); text-transform: uppercase; }
-    .form-group input, .form-group textarea, .form-group select {
-      background: var(--bg1); border: 1px solid var(--border2);
-      border-radius: 6px; padding: 10px 14px; color: var(--text1);
-      font-family: var(--body); font-size: 0.8rem;
-      outline: none; transition: border-color 0.2s, box-shadow 0.2s;
+    .calendly-placeholder p {
+      font-size: 0.75rem;
+      color: var(--text3);
+      font-family: var(--mono);
+    }
+
+    .calendly-placeholder strong {
+      display: block;
+      font-size: 0.8rem;
+      color: var(--text2);
+      margin-bottom: 6px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      background: var(--bg2);
+      padding: 32px;
+      border-radius: var(--r);
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 0.65rem;
+      font-family: var(--mono);
+      letter-spacing: 0.05em;
+      color: var(--text2);
+      text-transform: uppercase;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      background: var(--bg1);
+      border: 1px solid var(--border2);
+      border-radius: 6px;
+      padding: 10px 14px;
+      color: var(--text1);
+      font-family: var(--body);
+      font-size: 0.8rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
       -webkit-appearance: none;
     }
-    .form-group input:focus, .form-group textarea:focus {
-      border-color: rgba(0,212,255,0.6);
-      box-shadow: 0 0 0 3px rgba(0,212,255,0.1);
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: rgba(0, 212, 255, 0.6);
+      box-shadow: 0 0 0 3px rgba(0, 212, 255, 0.1);
     }
-    .form-group textarea { resize: vertical; min-height: 100px; }
-    .form-group input::placeholder, .form-group textarea::placeholder { color: var(--text3); }
+
+    .form-group textarea {
+      resize: vertical;
+      min-height: 100px;
+    }
+
+    .form-group input::placeholder,
+    .form-group textarea::placeholder {
+      color: var(--text3);
+    }
 
     @media (max-width: 900px) {
-      .contact-wrapper { grid-template-columns: 1fr; gap: 40px; }
-      .form-row { grid-template-columns: 1fr; }
+      .contact-wrapper {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .form-row {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* ─── FOOTER ─────────────────────────────────── */
     footer {
-      background: var(--bg); border-top: 1px solid var(--border);
+      background: var(--bg);
+      border-top: 1px solid var(--border);
       padding: 48px 0 32px;
     }
+
     .footer-inner {
-      max-width: 1200px; margin: 0 auto; padding: 0 32px;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 32px;
     }
+
     .footer-top {
-      display: grid; grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 32px; padding-bottom: 32px;
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 32px;
+      padding-bottom: 32px;
       border-bottom: 1px solid var(--border);
     }
-    .footer-brand p { font-size: 0.75rem; color: var(--text2); line-height: 1.7; margin: 12px 0 20px; max-width: 300px; }
-    .footer-socials { display: flex; gap: 10px; }
+
+    .footer-brand p {
+      font-size: 0.75rem;
+      color: var(--text2);
+      line-height: 1.7;
+      margin: 12px 0 20px;
+      max-width: 300px;
+    }
+
+    .footer-socials {
+      display: flex;
+      gap: 10px;
+    }
+
     .footer-social {
-      width: 32px; height: 32px; border-radius: 8px;
-      background: var(--bg1); border: 1px solid var(--border);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--text2); text-decoration: none;
-      transition: all 0.2s; font-size: 0.85rem;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: var(--bg1);
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text2);
+      text-decoration: none;
+      transition: all 0.2s;
+      font-size: 0.85rem;
     }
-    .footer-social:hover { border-color: rgba(0,212,255,0.4); color: var(--cyan); background: var(--bg2); }
-    .footer-social svg { width: 14px; height: 14px; stroke: currentColor; fill: none; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
-    .footer-col h4 { font-family: var(--display); font-weight: 600; font-size: 0.8rem; color: #EAF2FF; margin-bottom: 12px; }
-    .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 8px; }
-    .footer-col ul a { font-size: 0.75rem; color: var(--text2); text-decoration: none; transition: color 0.2s; }
-    .footer-col ul a:hover { color: var(--cyan); }
+
+    .footer-social:hover {
+      border-color: rgba(0, 212, 255, 0.4);
+      color: var(--cyan);
+      background: var(--bg2);
+    }
+
+    .footer-social svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+      stroke-width: 1.8;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .footer-col h4 {
+      font-family: var(--display);
+      font-weight: 600;
+      font-size: 0.8rem;
+      color: #EAF2FF;
+      margin-bottom: 12px;
+    }
+
+    .footer-col ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .footer-col ul a {
+      font-size: 0.75rem;
+      color: var(--text2);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .footer-col ul a:hover {
+      color: var(--cyan);
+    }
+
     .footer-bottom {
-      padding-top: 24px; display: flex; align-items: center; justify-content: space-between;
-      flex-wrap: wrap; gap: 12px;
+      padding-top: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
     }
-    .footer-copy { font-size: 0.7rem; color: var(--text3); font-family: var(--mono); }
-    .footer-tagline { font-size: 0.7rem; color: var(--text3); font-family: var(--mono); }
+
+    .footer-copy {
+      font-size: 0.7rem;
+      color: var(--text3);
+      font-family: var(--mono);
+    }
+
+    .footer-tagline {
+      font-size: 0.7rem;
+      color: var(--text3);
+      font-family: var(--mono);
+    }
 
     @media (max-width: 900px) {
-      .footer-top { grid-template-columns: 1fr 1fr; }
-      .footer-brand { grid-column: 1 / -1; }
+      .footer-top {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-brand {
+        grid-column: 1 / -1;
+      }
     }
+
     @media (max-width: 520px) {
-      .footer-top { grid-template-columns: 1fr; }
+      .footer-top {
+        grid-template-columns: 1fr;
+      }
     }
 
     /* ─── SECTION DIVIDERS ───────────────────────── */
     .section-divider {
-      height: 1px; margin: 0;
+      height: 1px;
+      margin: 0;
       background: linear-gradient(90deg, transparent 0%, var(--border2) 30%, var(--border2) 70%, transparent 100%);
     }
 
     /* ─── LOADING/INTRO ANIMATION ────────────────── */
     #page-loader {
-      position: fixed; inset: 0; z-index: 9999;
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
       background: var(--bg);
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       transition: opacity 0.6s var(--ease);
     }
-    #page-loader.hidden { opacity: 0; pointer-events: none; }
+
+    #page-loader.hidden {
+      opacity: 0;
+      pointer-events: none;
+    }
+
     .loader-logo {
-      font-family: var(--display); font-weight: 800; font-size: 2rem;
-      color: #EAF2FF; letter-spacing: -0.02em;
+      font-family: var(--display);
+      font-weight: 800;
+      font-size: 2rem;
+      color: #EAF2FF;
+      letter-spacing: -0.02em;
       animation: loader-pulse 1.5s ease-in-out;
     }
-    .loader-logo span { color: var(--cyan); }
+
+    .loader-logo span {
+      color: var(--cyan);
+    }
+
     @keyframes loader-pulse {
-      0%{opacity:0;transform:scale(0.95)} 50%{opacity:1;transform:scale(1)} 100%{opacity:1;transform:scale(1)}
+      0% {
+        opacity: 0;
+        transform: scale(0.95)
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1)
+      }
+
+      100% {
+        opacity: 1;
+        transform: scale(1)
+      }
     }
 
     /* ─── SECTION BASE ───────────────────────────── */
-    section { position: relative; }
-    .section-header { margin-bottom: 0; }
+    section {
+      position: relative;
+    }
+
+    .section-header {
+      margin-bottom: 0;
+    }
 
     /* ─── NOISE OVERLAY ──────────────────────────── */
     body::before {
-      content: ''; position: fixed; inset: 0; z-index: -1; pointer-events: none;
+      content: '';
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
       opacity: 0.025;
       background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
       background-size: 200px;
     }
   </style>
 </head>
+
 <body>
 
-<!-- PAGE LOADER -->
-<div id="page-loader">
-  <div class="loader-logo">Obs<span>y</span>gnal</div>
-</div>
-
-<!-- NAVIGATION -->
-<nav id="navbar">
-  <div class="nav-inner">
-    <a href="#" class="nav-logo">Obs<span>y</span>gnal</a>
-    <ul class="nav-links">
-      <li><a href="#services">Solutions</a></li>
-      <li><a href="#solution">Architectures</a></li>
-      <li><a href="#insights">Insights</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-    <div class="nav-cta">
-      <a href="#contact" class="btn btn-primary" style="padding:9px 20px;font-size:0.85rem;">Book Discovery Call</a>
-      <div class="hamburger" id="hamburger" onclick="toggleMobile()">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </div>
-</nav>
-
-<!-- MOBILE MENU -->
-<div class="mobile-menu" id="mobile-menu">
-  <a href="#services" onclick="toggleMobile()">Solutions</a>
-  <a href="#solution" onclick="toggleMobile()">Architectures</a>
-  <a href="#insights" onclick="toggleMobile()">Insights</a>
-  <a href="#about" onclick="toggleMobile()">About</a>
-  <a href="#contact" onclick="toggleMobile()">Contact</a>
-  <a href="#contact" class="btn btn-primary" style="text-align:center;margin-top:8px;">Book Discovery Call</a>
-</div>
-
-<!-- HERO -->
-<section id="hero">
-  <canvas id="hero-canvas"></canvas>
-  <div class="hero-glow"></div>
-
-  <div class="hero-content">
-    <div class="hero-tag reveal">
-      <span class="tag">RAG Infrastructure for Enterprise</span>
-    </div>
-
-    <h1 class="hero-headline reveal reveal-delay-1">
-      Enterprise Knowledge.<br>
-      <span class="hero-rotating" id="rotating-text">
-        <span class="hero-rotating-item active gradient-text">Instantly Accessible.</span>
-        <span class="hero-rotating-item gradient-text">Transformed Into Intelligence.</span>
-        <span class="hero-rotating-item gradient-text">Built for Production.</span>
-        <span class="hero-rotating-item gradient-text">Made Searchable.</span>
-      </span>
-    </h1>
-
-    <p class="hero-sub reveal reveal-delay-2">
-      Obsygnal builds Retrieval-Augmented Generation systems that connect enterprise knowledge to AI — enabling trusted answers, intelligent search, and operational efficiency at scale.
-    </p>
-
-    <div class="hero-btns reveal reveal-delay-3">
-      <a href="#contact" class="btn btn-primary">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Book Discovery Call
-      </a>
-      <a href="#solution" class="btn btn-ghost">
-        Explore Architectures
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-      </a>
-    </div>
+  <!-- PAGE LOADER -->
+  <div id="page-loader">
+    <div class="loader-logo">Obs<span>y</span>gnal</div>
   </div>
 
-  <div class="hero-scroll">
-    <span>Scroll</span>
-    <div class="hero-scroll-line"></div>
+  <!-- NAVIGATION -->
+  <nav id="navbar">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">Obs<span>y</span>gnal</a>
+      <ul class="nav-links">
+        <li><a href="#services">Solutions</a></li>
+        <li><a href="#solution">Architectures</a></li>
+        <li><a href="#insights">Insights</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="nav-cta">
+        <a href="#contact" class="btn btn-primary" style="padding:9px 20px;font-size:0.85rem;">Book Discovery Call</a>
+        <div class="hamburger" id="hamburger" onclick="toggleMobile()">
+          <span></span><span></span><span></span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobile-menu">
+    <a href="#services" onclick="toggleMobile()">Solutions</a>
+    <a href="#solution" onclick="toggleMobile()">Architectures</a>
+    <a href="#insights" onclick="toggleMobile()">Insights</a>
+    <a href="#about" onclick="toggleMobile()">About</a>
+    <a href="#contact" onclick="toggleMobile()">Contact</a>
+    <a href="#contact" class="btn btn-primary" style="text-align:center;margin-top:8px;">Book Discovery Call</a>
   </div>
-  <div class="hero-glow-bottom"></div>
-</section>
 
-<!-- PROBLEM -->
-<section id="problem">
-  <div class="container">
-    <div class="section-label reveal">THE CHALLENGE</div>
-    <h2 class="section-title reveal reveal-delay-1">The Enterprise<br><span class="gradient-text">Knowledge Problem</span></h2>
+  <!-- HERO -->
+  <section id="hero">
+    <canvas id="hero-canvas"></canvas>
+    <div class="hero-glow"></div>
 
-    <div class="problem-grid reveal reveal-delay-2">
-      <!-- Source 1: PDFs -->
-      <div class="problem-source">
-        <div class="problem-source-icon">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
-        </div>
-        <div class="problem-source-name">PDFs</div>
+    <div class="hero-content">
+      <div class="hero-tag reveal">
+        <span class="tag">RAG Infrastructure for Enterprise</span>
       </div>
-      <!-- Source 2: SharePoint -->
-      <div class="problem-source">
-        <div class="problem-source-icon">
-          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 3v18"/><path d="M3 9h18"/></svg>
-        </div>
-        <div class="problem-source-name">SharePoint</div>
-      </div>
-      <!-- Source 3: Confluence -->
-      <div class="problem-source">
-        <div class="problem-source-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12"/></svg>
-        </div>
-        <div class="problem-source-name">Confluence</div>
-      </div>
-      <!-- Source 4: Emails -->
-      <div class="problem-source">
-        <div class="problem-source-icon">
-          <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-        </div>
-        <div class="problem-source-name">Emails</div>
-      </div>
-      <!-- Source 5: Databases -->
-      <div class="problem-source">
-        <div class="problem-source-icon">
-          <svg viewBox="0 0 24 24"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg>
-        </div>
-        <div class="problem-source-name">Databases</div>
-      </div>
-      <!-- Source 6: Tickets -->
-      <div class="problem-source">
-        <div class="problem-source-icon">
-          <svg viewBox="0 0 24 24"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
-        </div>
-        <div class="problem-source-name">Tickets</div>
-      </div>
-      <!-- Source 7: Wikis -->
-      <div class="problem-source">
-        <div class="problem-source-icon">
-          <svg viewBox="0 0 24 24"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>
-        </div>
-        <div class="problem-source-name">Wikis</div>
-      </div>
-      <!-- Source 8: Internal Docs -->
-      <div class="problem-source">
-        <div class="problem-source-icon">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
-        </div>
-        <div class="problem-source-name">Internal Docs</div>
+
+      <h1 class="hero-headline reveal reveal-delay-1">
+        Enterprise Knowledge.<br>
+        <span class="hero-rotating" id="rotating-text">
+          <span class="hero-rotating-item active gradient-text">Instantly Accessible.</span>
+          <span class="hero-rotating-item gradient-text">Transform Into Knowledge.</span>
+          <span class="hero-rotating-item gradient-text">Built for Production.</span>
+          <span class="hero-rotating-item gradient-text">Searchable.</span>
+        </span>
+      </h1>
+
+      <p class="hero-sub reveal reveal-delay-2">
+        Obsygnal builds Retrieval-Augmented Generation systems that connect enterprise knowledge to AI — enabling
+        trusted answers, intelligent search, and operational efficiency at scale.
+      </p>
+
+      <div class="hero-btns reveal reveal-delay-3">
+        <a href="#contact" class="btn btn-primary">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          Book Discovery Call
+        </a>
+        <a href="#solution" class="btn btn-ghost">
+          Explore Architectures
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12" />
+            <polyline points="12 5 19 12 12 19" />
+          </svg>
+        </a>
       </div>
     </div>
 
-    <div class="problem-text reveal reveal-delay-3">
-      <div>
-        <p>Organizations generate massive amounts of knowledge every day — but most of it remains inaccessible when people need it most. Critical expertise becomes trapped in systems and documents, invisible to the people and systems that could use it.</p>
-        <br>
-        <p>Modern AI is extraordinarily powerful. But without access to trusted organizational knowledge, it cannot deliver meaningful, grounded results. The bottleneck is not the model — it's the connection.</p>
-      </div>
-      <div class="problem-pain">
-        <div class="problem-pain-item">
-          <div class="pain-dot"></div>
-          <p>Employees spend 20–30% of their workday searching for information across disconnected systems</p>
-        </div>
-        <div class="problem-pain-item">
-          <div class="pain-dot"></div>
-          <p>Customers wait for answers that exist in internal documentation but can't be surfaced quickly</p>
-        </div>
-        <div class="problem-pain-item">
-          <div class="pain-dot"></div>
-          <p>Critical operational knowledge disappears when team members leave the organization</p>
-        </div>
-        <div class="problem-pain-item">
-          <div class="pain-dot"></div>
-          <p>AI deployments fail because they hallucinate — lacking access to authoritative enterprise context</p>
-        </div>
-      </div>
+    <div class="hero-scroll">
+      <span>Scroll</span>
+      <div class="hero-scroll-line"></div>
     </div>
-  </div>
-</section>
+    <div class="hero-glow-bottom"></div>
+  </section>
 
-<!-- SOLUTION / ARCHITECTURE -->
-<section id="solution">
-  <div class="container">
-    <div class="section-label reveal">ARCHITECTURE</div>
-    <h2 class="section-title reveal reveal-delay-1">How Obsygnal<br><span class="gradient-text">Solves It</span></h2>
-    <p style="color:var(--text2);max-width:560px;margin-top:16px;line-height:1.8;font-size:0.95rem;" class="reveal reveal-delay-2">
-      Every system we build follows a rigorous retrieval architecture — from raw enterprise data through intelligent processing, embedding, indexing, and reasoning to trusted, citable answers.
-    </p>
+  <!-- PROBLEM -->
+  <section id="problem">
+    <div class="container">
+      <div class="section-label reveal">THE CHALLENGE</div>
+      <h2 class="section-title reveal reveal-delay-1">The Enterprise<br><span class="gradient-text">Knowledge
+          Problem</span></h2>
 
-    <div class="arch-flow">
-
-      <div class="arch-node reveal reveal-delay-1">
-        <div class="arch-node-num">01</div>
-        <div><div class="arch-node-label">Enterprise Data Sources</div><div class="arch-node-desc">SharePoint, Confluence, S3, databases, APIs, email, wikis</div></div>
-        <div class="arch-node-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text3)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></svg></div>
-      </div>
-      <div class="arch-connector"></div>
-      <div class="arch-node reveal reveal-delay-2">
-        <div class="arch-node-num">02</div>
-        <div><div class="arch-node-label">Ingestion Pipeline</div><div class="arch-node-desc">Batch + streaming connectors, change detection, schema normalization</div></div>
-      </div>
-      <div class="arch-connector"></div>
-      <div class="arch-node reveal reveal-delay-2">
-        <div class="arch-node-num">03</div>
-        <div><div class="arch-node-label">Document Processing</div><div class="arch-node-desc">Chunking strategies, metadata extraction, hierarchy preservation</div></div>
-      </div>
-      <div class="arch-connector"></div>
-      <div class="arch-node reveal reveal-delay-3">
-        <div class="arch-node-num">04</div>
-        <div><div class="arch-node-label">Embedding Models</div><div class="arch-node-desc">Domain-fine-tuned models, multi-modal embeddings, sparse encoding</div></div>
-      </div>
-      <div class="arch-connector"></div>
-      <div class="arch-node reveal reveal-delay-3">
-        <div class="arch-node-num">05</div>
-        <div><div class="arch-node-label">Vector Database + Knowledge Graph</div><div class="arch-node-desc">Hybrid stores: Qdrant, Weaviate, Pinecone + Neo4j / graph layers</div></div>
-      </div>
-      <div class="arch-connector"></div>
-      <div class="arch-node reveal reveal-delay-4">
-        <div class="arch-node-num">06</div>
-        <div><div class="arch-node-label">Hybrid Retrieval</div><div class="arch-node-desc">Dense + sparse retrieval, cross-encoder reranking, contextual fusion</div></div>
-      </div>
-      <div class="arch-connector"></div>
-      <div class="arch-node reveal reveal-delay-4">
-        <div class="arch-node-num">07</div>
-        <div><div class="arch-node-label">Large Language Model</div><div class="arch-node-desc">Grounded generation with citations, hallucination detection, RAG eval</div></div>
-      </div>
-      <div class="arch-connector"></div>
-      <div class="arch-node reveal reveal-delay-5" style="border-color: rgba(0,204,255,0.5); background: var(--bg3);">
-        <div class="arch-node-num" style="background: rgba(0,204,255,0.15); border-color: rgba(0,204,255,0.4); color: var(--cyan);">✓</div>
-        <div><div class="arch-node-label" style="color:var(--cyan);">Trusted Enterprise Answers</div><div class="arch-node-desc">Cited, auditable, grounded responses with full observability</div></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="container">
-    <div class="section-label reveal">SOLUTIONS</div>
-    <h2 class="section-title reveal reveal-delay-1">What We <span class="gradient-text">Build</span></h2>
-    <p style="color:var(--text2);max-width:520px;margin-top:16px;line-height:1.8;font-size:0.95rem;" class="reveal reveal-delay-2">
-      From employee knowledge assistants to operational intelligence systems — we build RAG infrastructure tailored to your specific knowledge landscape.
-    </p>
-
-    <div class="services-grid">
-
-      <div class="service-card reveal reveal-delay-1">
-        <span class="service-num">01</span>
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        </div>
-        <div class="service-title">Enterprise Knowledge Assistants</div>
-        <div class="service-desc">Allow employees to have intelligent conversations with internal documentation, policies, and organizational knowledge. Grounded answers with full source attribution.</div>
-      </div>
-
-      <div class="service-card reveal reveal-delay-2">
-        <span class="service-num">02</span>
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        </div>
-        <div class="service-title">Customer Support RAG</div>
-        <div class="service-desc">Ground AI responses using support documentation and knowledge bases. Reduce ticket resolution time while improving answer accuracy and consistency.</div>
-      </div>
-
-      <div class="service-card reveal reveal-delay-3">
-        <span class="service-num">03</span>
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
-        </div>
-        <div class="service-title">Engineering Knowledge Platforms</div>
-        <div class="service-desc">Make architecture decisions, RFCs, ADRs, technical documentation, and operational runbooks instantly searchable and accessible across your engineering organization.</div>
-      </div>
-
-      <div class="service-card reveal reveal-delay-1">
-        <span class="service-num">04</span>
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-        </div>
-        <div class="service-title">Security & Operations Intelligence</div>
-        <div class="service-desc">Surface incidents, postmortems, runbooks, and operational intelligence on demand. Accelerate incident response and reduce mean time to resolution.</div>
-      </div>
-
-      <div class="service-card reveal reveal-delay-2">
-        <span class="service-num">05</span>
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/></svg>
-        </div>
-        <div class="service-title">Compliance & Policy Assistants</div>
-        <div class="service-desc">Enable rapid access to policies, procedures, and regulatory documentation. Reduce compliance risk by ensuring teams always find the right, current policy.</div>
-      </div>
-
-      <div class="service-card reveal reveal-delay-3">
-        <span class="service-num">06</span>
-        <div class="service-icon">
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <div class="service-title">Custom Enterprise RAG Platforms</div>
-        <div class="service-desc">Tailored retrieval systems designed around your specific business workflows, data landscape, compliance requirements, and integration architecture.</div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- WHY OBSYGNAL -->
-<section id="why">
-  <div class="container">
-    <div class="section-label reveal">WHY OBSYGNAL</div>
-    <h2 class="section-title reveal reveal-delay-1">Why Organizations<br><span class="gradient-text">Choose Obsygnal</span></h2>
-
-    <div class="why-pillars">
-
-      <div class="why-pillar reveal reveal-delay-1">
-        <div class="why-pillar-icon">
-          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
-        </div>
-        <div class="why-pillar-title">Engineering Excellence</div>
-        <div class="why-pillar-desc">Production-grade systems built for reliability, observability, scalability, and long-term maintainability. We don't build demos — we build systems that run in production for years.</div>
-      </div>
-
-      <div class="why-pillar reveal reveal-delay-2">
-        <div class="why-pillar-icon">
-          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><polyline points="3.27 6.96 12 12.01 20.73 6.96"/><line x1="12" y1="22.08" x2="12" y2="12"/></svg>
-        </div>
-        <div class="why-pillar-title">Knowledge Intelligence</div>
-        <div class="why-pillar-desc">Deep expertise in information retrieval, vector search, knowledge graphs, hybrid retrieval, and enterprise AI. We understand knowledge — not just technology.</div>
-      </div>
-
-      <div class="why-pillar reveal reveal-delay-3">
-        <div class="why-pillar-icon">
-          <svg viewBox="0 0 24 24"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
-        </div>
-        <div class="why-pillar-title">Business Impact</div>
-        <div class="why-pillar-desc">Measurable outcomes: reduced search time, faster decisions, accelerated onboarding, and unlocked organizational knowledge. Every system we build is tied to a business result.</div>
-      </div>
-
-    </div>
-
-    <div class="counters reveal reveal-delay-2">
-      <div class="counter-item">
-        <div class="counter-value" data-target="10000" data-suffix="+">0</div>
-        <div class="counter-label">Hours Saved</div>
-      </div>
-      <div class="counter-item">
-        <div class="counter-value" data-target="50" data-suffix="+">0</div>
-        <div class="counter-label">Knowledge Sources Connected</div>
-      </div>
-      <div class="counter-item">
-        <div class="counter-value" data-target="5" data-suffix="M+">0</div>
-        <div class="counter-label">Documents Indexed</div>
-      </div>
-      <div class="counter-item">
-        <div class="counter-value" data-target="500" data-suffix="K+">0</div>
-        <div class="counter-label">Answers Generated</div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<!-- CAPABILITIES -->
-<section id="capabilities">
-  <div class="container">
-    <div class="section-label reveal">RAG EXPERTISE</div>
-    <h2 class="section-title reveal reveal-delay-1">Our RAG <span class="gradient-text">Capabilities</span></h2>
-    <p style="color:var(--text2);max-width:520px;margin-top:16px;line-height:1.8;font-size:0.95rem;" class="reveal reveal-delay-2">
-      Deep technical expertise across the full spectrum of modern retrieval-augmented generation — from classical pipelines to cutting-edge agentic architectures.
-    </p>
-
-    <div class="capabilities-grid">
-      <div class="cap-card reveal reveal-delay-1" onclick="toggleCap(this)">
-        <div class="cap-card-header">
-          <div class="cap-card-title">Classical RAG</div>
-          <div class="cap-card-tag"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
-        </div>
-        <div class="cap-card-body">Foundational retrieval-augmented generation pipelines with chunking, embedding, vector search, and LLM generation. The reliable baseline we optimize from.</div>
-      </div>
-      <div class="cap-card reveal reveal-delay-1" onclick="toggleCap(this)">
-        <div class="cap-card-header">
-          <div class="cap-card-title">Hybrid Search</div>
-          <div class="cap-card-tag"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
-        </div>
-        <div class="cap-card-body">Combining dense vector search with BM25 sparse retrieval using Reciprocal Rank Fusion. Consistently outperforms either approach alone across diverse query types.</div>
-      </div>
-      <div class="cap-card reveal reveal-delay-2" onclick="toggleCap(this)">
-        <div class="cap-card-header">
-          <div class="cap-card-title">Semantic Search</div>
-          <div class="cap-card-tag"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
-        </div>
-        <div class="cap-card-body">Meaning-aware search that understands intent beyond keywords. Fine-tuned embedding models capture domain-specific semantics for enterprise knowledge domains.</div>
-      </div>
-      <div class="cap-card reveal reveal-delay-2" onclick="toggleCap(this)">
-        <div class="cap-card-header">
-          <div class="cap-card-title">Knowledge Graph RAG</div>
-          <div class="cap-card-tag"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
-        </div>
-        <div class="cap-card-body">Graph-structured retrieval for complex enterprise knowledge. Traverse entity relationships, surface implicit connections, and navigate organizational knowledge hierarchies.</div>
-      </div>
-      <div class="cap-card reveal reveal-delay-3" onclick="toggleCap(this)">
-        <div class="cap-card-header">
-          <div class="cap-card-title">Agentic RAG</div>
-          <div class="cap-card-tag"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
-        </div>
-        <div class="cap-card-body">AI agents that autonomously plan retrieval strategies, decide when to search, synthesize across multiple retrievals, and iteratively refine answers for complex queries.</div>
-      </div>
-      <div class="cap-card reveal reveal-delay-3" onclick="toggleCap(this)">
-        <div class="cap-card-header">
-          <div class="cap-card-title">Multi-Hop Retrieval</div>
-          <div class="cap-card-tag"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
-        </div>
-        <div class="cap-card-body">Chain multiple retrieval steps to answer questions requiring reasoning across disparate document sources. Essential for complex enterprise knowledge workflows.</div>
-      </div>
-      <div class="cap-card reveal reveal-delay-4" onclick="toggleCap(this)">
-        <div class="cap-card-header">
-          <div class="cap-card-title">Contextual Retrieval</div>
-          <div class="cap-card-tag"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
-        </div>
-        <div class="cap-card-body">Enriching chunks with contextual metadata before embedding — dramatically improving retrieval precision for long documents and knowledge hierarchies.</div>
-      </div>
-      <div class="cap-card reveal reveal-delay-4" onclick="toggleCap(this)">
-        <div class="cap-card-header">
-          <div class="cap-card-title">Re-Ranking</div>
-          <div class="cap-card-tag"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
-        </div>
-        <div class="cap-card-body">Cross-encoder reranking of retrieved candidates against the original query. Substantial precision improvements that transform retrieval quality in production systems.</div>
-      </div>
-      <div class="cap-card reveal reveal-delay-1" onclick="toggleCap(this)">
-        <div class="cap-card-header">
-          <div class="cap-card-title">Retrieval Evaluation</div>
-          <div class="cap-card-tag"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
-        </div>
-        <div class="cap-card-body">RAGAS, LLM-as-judge, and custom evaluation frameworks. We measure retrieval precision, recall, faithfulness, and answer relevancy systematically.</div>
-      </div>
-      <div class="cap-card reveal reveal-delay-2" onclick="toggleCap(this)">
-        <div class="cap-card-header">
-          <div class="cap-card-title">AI Observability</div>
-          <div class="cap-card-tag"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
-        </div>
-        <div class="cap-card-body">Full pipeline observability with tracing, logging, and monitoring for every retrieval operation. Know exactly why every answer was generated and how to improve it.</div>
-      </div>
-      <div class="cap-card reveal reveal-delay-3" onclick="toggleCap(this)">
-        <div class="cap-card-header">
-          <div class="cap-card-title">Citation Tracking</div>
-          <div class="cap-card-tag"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
-        </div>
-        <div class="cap-card-body">Every answer is fully traceable to its source documents. Enterprise-grade citation systems that build trust and enable humans to verify AI-generated responses.</div>
-      </div>
-      <div class="cap-card reveal reveal-delay-4" onclick="toggleCap(this)">
-        <div class="cap-card-header">
-          <div class="cap-card-title">Hallucination Reduction</div>
-          <div class="cap-card-tag"><svg viewBox="0 0 10 10"><line x1="5" y1="1" x2="5" y2="9"/><line x1="1" y1="5" x2="9" y2="5"/></svg></div>
-        </div>
-        <div class="cap-card-body">Systematic approaches to grounding, faithfulness scoring, and factual consistency checks. We engineer hallucination out of enterprise RAG systems.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- INSIGHTS -->
-<section id="insights">
-  <div class="container">
-    <div class="section-label reveal">INSIGHTS</div>
-    <h2 class="section-title reveal reveal-delay-1">From the <span class="gradient-text">Knowledge Lab</span></h2>
-    <p style="color:var(--text2);max-width:520px;margin-top:16px;line-height:1.8;font-size:0.95rem;" class="reveal reveal-delay-2">
-      Deep technical writing on retrieval architecture, enterprise AI, and the future of organizational knowledge.
-    </p>
-
-    <div class="insights-grid">
-
-      <div class="insight-card reveal reveal-delay-1">
-        <div class="insight-meta">
-          <span class="insight-tag">Architecture</span>
-          <span class="insight-read">12 min read</span>
-        </div>
-        <div class="insight-title">The Evolution of RAG: From Naive Pipelines to Production Intelligence</div>
-        <div class="insight-excerpt">How retrieval-augmented generation has matured from a simple retrieve-and-generate pattern into a sophisticated family of architectures that power enterprise knowledge systems.</div>
-        <div class="insight-arrow">Read article <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-      </div>
-
-      <div class="insight-card reveal reveal-delay-2">
-        <div class="insight-meta">
-          <span class="insight-tag">Knowledge Graphs</span>
-          <span class="insight-read">9 min read</span>
-        </div>
-        <div class="insight-title">Knowledge Graphs and Enterprise Intelligence</div>
-        <div class="insight-excerpt">Why knowledge graphs are the missing layer in most enterprise RAG systems — and how graph-based retrieval fundamentally changes the quality of answers you can achieve.</div>
-        <div class="insight-arrow">Read article <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-      </div>
-
-      <div class="insight-card reveal reveal-delay-3">
-        <div class="insight-meta">
-          <span class="insight-tag">Agentic AI</span>
-          <span class="insight-read">15 min read</span>
-        </div>
-        <div class="insight-title">Agentic RAG Architecture Patterns for the Enterprise</div>
-        <div class="insight-excerpt">A comprehensive look at how autonomous retrieval agents differ from static pipelines — and the architectural patterns that make them reliable enough for enterprise deployment.</div>
-        <div class="insight-arrow">Read article <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-      </div>
-
-      <div class="insight-card reveal reveal-delay-1">
-        <div class="insight-meta">
-          <span class="insight-tag">Search</span>
-          <span class="insight-read">7 min read</span>
-        </div>
-        <div class="insight-title">Why Enterprise Search Is Broken — And How RAG Fixes It</div>
-        <div class="insight-excerpt">The fundamental failure modes of keyword search in large organizations, and why semantic retrieval with grounded generation represents a structural improvement, not just an incremental one.</div>
-        <div class="insight-arrow">Read article <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-      </div>
-
-      <div class="insight-card reveal reveal-delay-2">
-        <div class="insight-meta">
-          <span class="insight-tag">Production</span>
-          <span class="insight-read">11 min read</span>
-        </div>
-        <div class="insight-title">Building Reliable AI Systems: Observability in the Retrieval Layer</div>
-        <div class="insight-excerpt">The principles and practices that separate reliable production RAG systems from brittle prototypes — with a focus on tracing, evaluation, and continuous improvement.</div>
-        <div class="insight-arrow">Read article <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <div class="section-label reveal">THE TEAM</div>
-    <h2 class="section-title reveal reveal-delay-1">The Builders Behind<br><span class="gradient-text">Obsygnal</span></h2>
-
-    <p class="about-intro reveal reveal-delay-2">
-      We believe the future of enterprise AI depends on trusted knowledge. Obsygnal was founded by engineers, architects, and problem-solvers who are passionate about helping organizations unlock the value hidden inside their information — and turning it into real, operational intelligence.
-    </p>
-
-    <div class="team-grid">
-      <div class="team-card reveal reveal-delay-1">
-        <div class="team-avatar">BK</div>
-        <div class="team-name">Bikram Sarkar</div>
-        <div class="team-role">Co-Founder</div>
-        <div class="team-bio"> Machine Learning engineer specializing in information retrieval and enterprise search infrastructure.</div>
-      </div>
-      <div class="team-card reveal reveal-delay-2">
-        <div class="team-avatar">AK</div>
-        <div class="team-name">Akhil Dhanpal</div>
-        <div class="team-role">Co-Founder</div>
-        <div class="team-bio">ML systems architect with deep expertise in vector databases, knowledge graphs, and production LLM infrastructure.</div>
-      </div>
-      <div class="team-card reveal reveal-delay-3">
-        <div class="team-avatar">NP</div>
-        <div class="team-name">Naveen Pawar</div>
-        <div class="team-role">Co-Founder</div>
-          
-        <div class="team-bio">Enterprise software architect focused on designing scalable, observable, and maintainable knowledge systems.</div>
-       </div>
-      <div class="team-card reveal reveal-delay-4">
-        <div class="team-avatar">SG</div>
-        <div class="team-name">Souradeep Ghosh</div>
-        <div class="team-role">Co-Founder</div>
-        <div class="team-bio">NLP and information retrieval, focused on pushing the boundaries of RAG evaluation and accuracy.</div>
-      </div>
-      <div class="team-card reveal reveal-delay-5">
-        <div class="team-avatar">NS</div>
-        <div class="team-name">Nil Sinha</div>
-        <div class="team-role">Co-Founder</div>
-        <div class="team-bio">Data engineer with a passion for building tools that turn data into actionable insights.</div>
-      </div>
-    </div>
-
-    <div class="philosophy reveal reveal-delay-2">
-      <div class="philosophy-title">Our Philosophy</div>
-      <div class="philosophy-items">
-        <div class="philosophy-item">
-          <div class="philosophy-item-icon">
-            <svg viewBox="0 0 24 24"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg>
+      <div class="problem-grid reveal reveal-delay-2">
+        <!-- Source 1: PDFs -->
+        <div class="problem-source">
+          <div class="problem-source-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+              <line x1="16" y1="17" x2="8" y2="17" />
+              <polyline points="10 9 9 9 8 9" />
+            </svg>
           </div>
-          <p><strong style="color:var(--text1);display:block;margin-bottom:4px;">Knowledge should not be trapped.</strong>Every piece of organizational knowledge should be accessible to the people who need it, when they need it.</p>
+          <div class="problem-source-name">PDFs</div>
         </div>
-        <div class="philosophy-item">
-          <div class="philosophy-item-icon">
-            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <!-- Source 2: SharePoint -->
+        <div class="problem-source">
+          <div class="problem-source-icon">
+            <svg viewBox="0 0 24 24">
+              <rect x="3" y="3" width="18" height="18" rx="2" />
+              <path d="M9 3v18" />
+              <path d="M3 9h18" />
+            </svg>
           </div>
-          <p><strong style="color:var(--text1);display:block;margin-bottom:4px;">Information should be discoverable.</strong>The right answer exists somewhere in your organization. It should take seconds, not days, to find it.</p>
+          <div class="problem-source-name">SharePoint</div>
         </div>
-        <div class="philosophy-item">
-          <div class="philosophy-item-icon">
-            <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        <!-- Source 3: Confluence -->
+        <div class="problem-source">
+          <div class="problem-source-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="3" />
+              <path
+                d="M12 2v3M12 19v3M4.22 4.22l2.12 2.12M17.66 17.66l2.12 2.12M2 12h3M19 12h3M4.22 19.78l2.12-2.12M17.66 6.34l2.12-2.12" />
+            </svg>
           </div>
-          <p><strong style="color:var(--text1);display:block;margin-bottom:4px;">AI should be grounded in truth.</strong>Generative AI must be anchored in verified, organizational knowledge — not trained intuitions about what might be true.</p>
+          <div class="problem-source-name">Confluence</div>
         </div>
-        <div class="philosophy-item">
-          <div class="philosophy-item-icon">
-            <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        <!-- Source 4: Emails -->
+        <div class="problem-source">
+          <div class="problem-source-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
           </div>
-          <p><strong style="color:var(--text1);display:block;margin-bottom:4px;">Technology should amplify human expertise.</strong>The goal is not to replace human judgment — it's to ensure human knowledge is always findable and actionable.</p>
+          <div class="problem-source-name">Emails</div>
+        </div>
+        <!-- Source 5: Databases -->
+        <div class="problem-source">
+          <div class="problem-source-icon">
+            <svg viewBox="0 0 24 24">
+              <ellipse cx="12" cy="5" rx="9" ry="3" />
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+            </svg>
+          </div>
+          <div class="problem-source-name">Databases</div>
+        </div>
+        <!-- Source 6: Tickets -->
+        <div class="problem-source">
+          <div class="problem-source-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M9 11l3 3L22 4" />
+              <path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11" />
+            </svg>
+          </div>
+          <div class="problem-source-name">Tickets</div>
+        </div>
+        <!-- Source 7: Wikis -->
+        <div class="problem-source">
+          <div class="problem-source-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z" />
+              <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z" />
+            </svg>
+          </div>
+          <div class="problem-source-name">Wikis</div>
+        </div>
+        <!-- Source 8: Internal Docs -->
+        <div class="problem-source">
+          <div class="problem-source-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="12" y1="18" x2="12" y2="12" />
+              <line x1="9" y1="15" x2="15" y2="15" />
+            </svg>
+          </div>
+          <div class="problem-source-name">Internal Docs</div>
         </div>
       </div>
-    </div>
 
-  </div>
-</section>
-
-<!-- PROCESS -->
-<section id="process">
-  <div class="container">
-    <div class="section-label reveal">HOW WE WORK</div>
-    <h2 class="section-title reveal reveal-delay-1">From Discovery to<br><span class="gradient-text">Deployed Intelligence</span></h2>
-
-    <div class="process-timeline">
-      <div class="process-step reveal reveal-delay-1">
-        <div class="process-num">1</div>
-        <div class="process-step-label">Discovery</div>
-        <div class="process-step-title">Understand</div>
-        <div class="process-step-desc">Map your knowledge landscape, business challenges, and success criteria. Define what "good" looks like.</div>
-      </div>
-      <div class="process-step reveal reveal-delay-2">
-        <div class="process-num">2</div>
-        <div class="process-step-label">Architecture</div>
-        <div class="process-step-title">Design</div>
-        <div class="process-step-desc">Design the optimal retrieval architecture for your specific knowledge sources, query patterns, and scale.</div>
-      </div>
-      <div class="process-step reveal reveal-delay-3">
-        <div class="process-num">3</div>
-        <div class="process-step-label">Build</div>
-        <div class="process-step-title">Implement</div>
-        <div class="process-step-desc">Build production-grade retrieval systems with observability, evaluation, and enterprise-grade reliability baked in.</div>
-      </div>
-      <div class="process-step reveal reveal-delay-4">
-        <div class="process-num">4</div>
-        <div class="process-step-label">Deploy</div>
-        <div class="process-step-title">Integrate</div>
-        <div class="process-step-desc">Integrate seamlessly with your existing enterprise workflows, tools, and authentication infrastructure.</div>
-      </div>
-      <div class="process-step reveal reveal-delay-5">
-        <div class="process-num">5</div>
-        <div class="process-step-label">Optimize</div>
-        <div class="process-step-title">Improve</div>
-        <div class="process-step-desc">Continuously measure retrieval quality, monitor production behavior, and improve system accuracy over time.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- FINAL CTA -->
-<section id="final-cta">
-  <canvas id="cta-canvas"></canvas>
-  <div class="cta-divider"></div>
-  <div class="cta-content">
-    <div class="section-label reveal" style="justify-content:center;">YOUR ANSWERS ARE ALREADY THERE</div>
-    <h2 class="cta-headline reveal reveal-delay-1">
-      Your Organization<br>Already Has<br><span class="gradient-text">The Answers</span>
-    </h2>
-    <p class="cta-sub reveal reveal-delay-2">Let's make them accessible.</p>
-    <div class="cta-btns reveal reveal-delay-3">
-      <a href="#contact" class="btn btn-primary" style="padding:15px 36px;font-size:1rem;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        Book Discovery Call
-      </a>
-      <a href="mailto:hello@obsygnal.com" class="btn btn-ghost" style="padding:15px 36px;font-size:1rem;">Contact Us</a>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="container">
-    <div class="section-label reveal">GET IN TOUCH</div>
-    <h2 class="section-title reveal reveal-delay-1">Start the <span class="gradient-text">Conversation</span></h2>
-
-    <div class="contact-wrapper">
-      <div>
-        <div class="contact-info">
-          <h3>Tell us about your knowledge challenge</h3>
-          <p>We work with enterprises, mid-market companies, and funded startups that are serious about building production-grade RAG infrastructure. Every engagement starts with a focused discovery conversation.</p>
+      <div class="problem-text reveal reveal-delay-3">
+        <div>
+          <p>Organizations generate massive amounts of knowledge every day — but most of it remains inaccessible when
+            people need it most. Critical expertise becomes trapped in systems and documents, invisible to the people
+            and systems that could use it.</p>
+          <br>
+          <p>Modern AI is extraordinarily powerful. But without access to trusted organizational knowledge, it cannot
+            deliver meaningful, grounded results. The bottleneck is not the model — it's the connection.</p>
         </div>
-
-        <div class="contact-detail">
-          <div class="contact-detail-icon">
-            <svg viewBox="0 0 24 24"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <div class="problem-pain">
+          <div class="problem-pain-item">
+            <div class="pain-dot"></div>
+            <p>Employees spend 20–30% of their workday searching for information across disconnected systems</p>
           </div>
-          <a href="mailto:hello@obsygnal.com">hello@obsygnal.com</a>
-        </div>
-
-        <div class="contact-detail">
-          <div class="contact-detail-icon">
-            <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <div class="problem-pain-item">
+            <div class="pain-dot"></div>
+            <p>Customers wait for answers that exist in internal documentation but can't be surfaced quickly</p>
           </div>
-          <span>Hyderabad, Telangana, India · Serving enterprises globally</span>
-        
-      </div>
-
-      <div class="contact-form reveal reveal-delay-2">
-        <div class="form-row">
-          <div class="form-group">
-            <label>Name</label>
-            <input type="text" placeholder="Your full name">
+          <div class="problem-pain-item">
+            <div class="pain-dot"></div>
+            <p>Critical operational knowledge disappears when team members leave the organization</p>
           </div>
-          <div class="form-group">
-            <label>Company</label>
-            <input type="text" placeholder="Company name">
+          <div class="problem-pain-item">
+            <div class="pain-dot"></div>
+            <p>AI deployments fail because they hallucinate — lacking access to authoritative enterprise context</p>
           </div>
         </div>
-        <div class="form-row">
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" placeholder="work@company.com">
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTION / ARCHITECTURE -->
+  <section id="solution">
+    <div class="container">
+      <div class="section-label reveal">ARCHITECTURE</div>
+      <h2 class="section-title reveal reveal-delay-1">How Obsygnal<br><span class="gradient-text">Solves It</span></h2>
+      <p style="color:var(--text2);max-width:560px;margin-top:16px;line-height:1.8;font-size:0.95rem;"
+        class="reveal reveal-delay-2">
+        Every system we build follows a rigorous retrieval architecture — from raw enterprise data through intelligent
+        processing, embedding, indexing, and reasoning to trusted, citable answers.
+      </p>
+
+      <div class="arch-flow">
+
+        <div class="arch-node reveal reveal-delay-1">
+          <div class="arch-node-num">01</div>
+          <div>
+            <div class="arch-node-label">Enterprise Data Sources</div>
+            <div class="arch-node-desc">SharePoint, Confluence, S3, databases, APIs, email, wikis</div>
           </div>
-          <div class="form-group">
-            <label>Phone</label>
-            <input type="tel" placeholder="+1 (555) 000-0000">
+          <div class="arch-node-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--text3)"
+              stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3" />
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3" />
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5" />
+            </svg></div>
+        </div>
+        <div class="arch-connector"></div>
+        <div class="arch-node reveal reveal-delay-2">
+          <div class="arch-node-num">02</div>
+          <div>
+            <div class="arch-node-label">Ingestion Pipeline</div>
+            <div class="arch-node-desc">Batch + streaming connectors, change detection, schema normalization</div>
           </div>
         </div>
-        <div class="form-group">
-          <label>Tell us about your knowledge challenge</label>
-          <textarea placeholder="Describe your current knowledge landscape, the challenge you're facing, and what a successful outcome would look like for your organization..."></textarea>
+        <div class="arch-connector"></div>
+        <div class="arch-node reveal reveal-delay-2">
+          <div class="arch-node-num">03</div>
+          <div>
+            <div class="arch-node-label">Document Processing</div>
+            <div class="arch-node-desc">Chunking strategies, metadata extraction, hierarchy preservation</div>
+          </div>
         </div>
-        <button class="btn btn-primary" style="width:100%;justify-content:center;padding:15px;font-size:1rem;" onclick="handleSubmit(event)">
-          Let's Talk
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-        </button>
+        <div class="arch-connector"></div>
+        <div class="arch-node reveal reveal-delay-3">
+          <div class="arch-node-num">04</div>
+          <div>
+            <div class="arch-node-label">Embedding Models</div>
+            <div class="arch-node-desc">Domain-fine-tuned models, multi-modal embeddings, sparse encoding</div>
+          </div>
+        </div>
+        <div class="arch-connector"></div>
+        <div class="arch-node reveal reveal-delay-3">
+          <div class="arch-node-num">05</div>
+          <div>
+            <div class="arch-node-label">Vector Database + Knowledge Graph</div>
+            <div class="arch-node-desc">Hybrid stores: Qdrant, Weaviate, Pinecone + Neo4j / graph layers</div>
+          </div>
+        </div>
+        <div class="arch-connector"></div>
+        <div class="arch-node reveal reveal-delay-4">
+          <div class="arch-node-num">06</div>
+          <div>
+            <div class="arch-node-label">Hybrid Retrieval</div>
+            <div class="arch-node-desc">Dense + sparse retrieval, cross-encoder reranking, contextual fusion</div>
+          </div>
+        </div>
+        <div class="arch-connector"></div>
+        <div class="arch-node reveal reveal-delay-4">
+          <div class="arch-node-num">07</div>
+          <div>
+            <div class="arch-node-label">Large Language Model</div>
+            <div class="arch-node-desc">Grounded generation with citations, hallucination detection, RAG eval</div>
+          </div>
+        </div>
+        <div class="arch-connector"></div>
+        <div class="arch-node reveal reveal-delay-5" style="border-color: rgba(0,204,255,0.5); background: var(--bg3);">
+          <div class="arch-node-num"
+            style="background: rgba(0,204,255,0.15); border-color: rgba(0,204,255,0.4); color: var(--cyan);">✓</div>
+          <div>
+            <div class="arch-node-label" style="color:var(--cyan);">Trusted Enterprise Answers</div>
+            <div class="arch-node-desc">Cited, auditable, grounded responses with full observability</div>
+          </div>
+        </div>
+
       </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- FOOTER -->
-<footer>
-  <div class="footer-inner">
-    <div class="footer-top">
-      <div class="footer-brand">
-        <a href="#" class="nav-logo" style="font-size:1.5rem;">Obs<span>y</span>gnal</a>
-        <p>Transforming Enterprise Knowledge Into Intelligence. Production-grade RAG systems for organizations that need trusted, grounded AI.</p>
-        <div class="footer-socials">
-          <a href="#" class="footer-social" title="LinkedIn">
-            <svg viewBox="0 0 24 24"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          </a>
-          <a href="#" class="footer-social" title="GitHub">
-            <svg viewBox="0 0 24 24"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-          </a>
-          <a href="#" class="footer-social" title="X / Twitter">
-            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
-          </a>
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="container">
+      <div class="section-label reveal">SOLUTIONS</div>
+      <h2 class="section-title reveal reveal-delay-1">What We <span class="gradient-text">Build</span></h2>
+      <p style="color:var(--text2);max-width:520px;margin-top:16px;line-height:1.8;font-size:0.95rem;"
+        class="reveal reveal-delay-2">
+        From employee knowledge assistants to operational intelligence systems — we build RAG infrastructure tailored to
+        your specific knowledge landscape.
+      </p>
+
+      <div class="services-grid">
+
+        <div class="service-card reveal reveal-delay-1">
+          <span class="service-num">01</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z" />
+            </svg>
+          </div>
+          <div class="service-title">Enterprise Knowledge Assistants</div>
+          <div class="service-desc">Allow employees to have intelligent conversations with internal documentation,
+            policies, and organizational knowledge. Grounded answers with full source attribution.</div>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <span class="service-num">02</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+              <line x1="12" y1="17" x2="12.01" y2="17" />
+            </svg>
+          </div>
+          <div class="service-title">Customer Support RAG</div>
+          <div class="service-desc">Ground AI responses using support documentation and knowledge bases. Reduce ticket
+            resolution time while improving answer accuracy and consistency.</div>
+        </div>
+
+        <div class="service-card reveal reveal-delay-3">
+          <span class="service-num">03</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24">
+              <polyline points="16 18 22 12 16 6" />
+              <polyline points="8 6 2 12 8 18" />
+            </svg>
+          </div>
+          <div class="service-title">Engineering Knowledge Platforms</div>
+          <div class="service-desc">Make architecture decisions, RFCs, ADRs, technical documentation, and operational
+            runbooks instantly searchable and accessible across your engineering organization.</div>
+        </div>
+
+        <div class="service-card reveal reveal-delay-1">
+          <span class="service-num">04</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <div class="service-title">Security & Operations Intelligence</div>
+          <div class="service-desc">Surface incidents, postmortems, runbooks, and operational intelligence on demand.
+            Accelerate incident response and reduce mean time to resolution.</div>
+        </div>
+
+        <div class="service-card reveal reveal-delay-2">
+          <span class="service-num">05</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+              <polyline points="14 2 14 8 20 8" />
+              <line x1="16" y1="13" x2="8" y2="13" />
+            </svg>
+          </div>
+          <div class="service-title">Compliance & Policy Assistants</div>
+          <div class="service-desc">Enable rapid access to policies, procedures, and regulatory documentation. Reduce
+            compliance risk by ensuring teams always find the right, current policy.</div>
+        </div>
+
+        <div class="service-card reveal reveal-delay-3">
+          <span class="service-num">06</span>
+          <div class="service-icon">
+            <svg viewBox="0 0 24 24">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+          </div>
+          <div class="service-title">Custom Enterprise RAG Platforms</div>
+          <div class="service-desc">Tailored retrieval systems designed around your specific business workflows, data
+            landscape, compliance requirements, and integration architecture.</div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY OBSYGNAL -->
+  <section id="why">
+    <div class="container">
+      <div class="section-label reveal">WHY OBSYGNAL</div>
+      <h2 class="section-title reveal reveal-delay-1">Why Organizations<br><span class="gradient-text">Choose
+          Obsygnal</span></h2>
+
+      <div class="why-pillars">
+
+        <div class="why-pillar reveal reveal-delay-1">
+          <div class="why-pillar-icon">
+            <svg viewBox="0 0 24 24">
+              <polygon
+                points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </svg>
+          </div>
+          <div class="why-pillar-title">Engineering Excellence</div>
+          <div class="why-pillar-desc">Production-grade systems built for reliability, observability, scalability, and
+            long-term maintainability. We don't build demos — we build systems that run in production for years.</div>
+        </div>
+
+        <div class="why-pillar reveal reveal-delay-2">
+          <div class="why-pillar-icon">
+            <svg viewBox="0 0 24 24">
+              <path
+                d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+              <polyline points="3.27 6.96 12 12.01 20.73 6.96" />
+              <line x1="12" y1="22.08" x2="12" y2="12" />
+            </svg>
+          </div>
+          <div class="why-pillar-title">Knowledge Intelligence</div>
+          <div class="why-pillar-desc">Deep expertise in information retrieval, vector search, knowledge graphs, hybrid
+            retrieval, and enterprise AI. We understand knowledge — not just technology.</div>
+        </div>
+
+        <div class="why-pillar reveal reveal-delay-3">
+          <div class="why-pillar-icon">
+            <svg viewBox="0 0 24 24">
+              <line x1="18" y1="20" x2="18" y2="10" />
+              <line x1="12" y1="20" x2="12" y2="4" />
+              <line x1="6" y1="20" x2="6" y2="14" />
+            </svg>
+          </div>
+          <div class="why-pillar-title">Business Impact</div>
+          <div class="why-pillar-desc">Measurable outcomes: reduced search time, faster decisions, accelerated
+            onboarding, and unlocked organizational knowledge. Every system we build is tied to a business result.</div>
+        </div>
+
+      </div>
+
+      <div class="counters reveal reveal-delay-2">
+        <div class="counter-item">
+          <div class="counter-value" data-target="10000" data-suffix="+">0</div>
+          <div class="counter-label">Hours Saved</div>
+        </div>
+        <div class="counter-item">
+          <div class="counter-value" data-target="50" data-suffix="+">0</div>
+          <div class="counter-label">Knowledge Sources Connected</div>
+        </div>
+        <div class="counter-item">
+          <div class="counter-value" data-target="5" data-suffix="M+">0</div>
+          <div class="counter-label">Documents Indexed</div>
+        </div>
+        <div class="counter-item">
+          <div class="counter-value" data-target="500" data-suffix="K+">0</div>
+          <div class="counter-label">Answers Generated</div>
         </div>
       </div>
 
-      <div class="footer-col">
-        <h4>Solutions</h4>
-        <ul>
-          <li><a href="#services">Knowledge Assistants</a></li>
-          <li><a href="#services">Customer Support RAG</a></li>
-          <li><a href="#services">Engineering Knowledge</a></li>
-          <li><a href="#services">Security & Ops</a></li>
-          <li><a href="#services">Compliance AI</a></li>
-        </ul>
-      </div>
+    </div>
+  </section>
 
-      <div class="footer-col">
-        <h4>Architectures</h4>
-        <ul>
-          <li><a href="#capabilities">Hybrid Search</a></li>
-          <li><a href="#capabilities">Knowledge Graph RAG</a></li>
-          <li><a href="#capabilities">Agentic RAG</a></li>
-          <li><a href="#capabilities">Multi-Hop Retrieval</a></li>
-          <li><a href="#solution">Full Architecture</a></li>
-        </ul>
-      </div>
+  <!-- CAPABILITIES -->
+  <section id="capabilities">
+    <div class="container">
+      <div class="section-label reveal">RAG EXPERTISE</div>
+      <h2 class="section-title reveal reveal-delay-1">Our RAG <span class="gradient-text">Capabilities</span></h2>
+      <p style="color:var(--text2);max-width:520px;margin-top:16px;line-height:1.8;font-size:0.95rem;"
+        class="reveal reveal-delay-2">
+        Deep technical expertise across the full spectrum of modern retrieval-augmented generation — from classical
+        pipelines to cutting-edge agentic architectures.
+      </p>
 
-      <div class="footer-col">
-        <h4>Company</h4>
-        <ul>
-          <li><a href="#insights">Insights</a></li>
-          <li><a href="#about">About</a></li>
-          <li><a href="#process">How We Work</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="mailto:hello@obsygnal.com">hello@obsygnal.com</a></li>
-        </ul>
+      <div class="capabilities-grid">
+        <div class="cap-card reveal reveal-delay-1" onclick="toggleCap(this)">
+          <div class="cap-card-header">
+            <div class="cap-card-title">Classical RAG</div>
+            <div class="cap-card-tag"><svg viewBox="0 0 10 10">
+                <line x1="5" y1="1" x2="5" y2="9" />
+                <line x1="1" y1="5" x2="9" y2="5" />
+              </svg></div>
+          </div>
+          <div class="cap-card-body">Foundational retrieval-augmented generation pipelines with chunking, embedding,
+            vector search, and LLM generation. The reliable baseline we optimize from.</div>
+        </div>
+        <div class="cap-card reveal reveal-delay-1" onclick="toggleCap(this)">
+          <div class="cap-card-header">
+            <div class="cap-card-title">Hybrid Search</div>
+            <div class="cap-card-tag"><svg viewBox="0 0 10 10">
+                <line x1="5" y1="1" x2="5" y2="9" />
+                <line x1="1" y1="5" x2="9" y2="5" />
+              </svg></div>
+          </div>
+          <div class="cap-card-body">Combining dense vector search with BM25 sparse retrieval using Reciprocal Rank
+            Fusion. Consistently outperforms either approach alone across diverse query types.</div>
+        </div>
+        <div class="cap-card reveal reveal-delay-2" onclick="toggleCap(this)">
+          <div class="cap-card-header">
+            <div class="cap-card-title">Semantic Search</div>
+            <div class="cap-card-tag"><svg viewBox="0 0 10 10">
+                <line x1="5" y1="1" x2="5" y2="9" />
+                <line x1="1" y1="5" x2="9" y2="5" />
+              </svg></div>
+          </div>
+          <div class="cap-card-body">Meaning-aware search that understands intent beyond keywords. Fine-tuned embedding
+            models capture domain-specific semantics for enterprise knowledge domains.</div>
+        </div>
+        <div class="cap-card reveal reveal-delay-2" onclick="toggleCap(this)">
+          <div class="cap-card-header">
+            <div class="cap-card-title">Knowledge Graph RAG</div>
+            <div class="cap-card-tag"><svg viewBox="0 0 10 10">
+                <line x1="5" y1="1" x2="5" y2="9" />
+                <line x1="1" y1="5" x2="9" y2="5" />
+              </svg></div>
+          </div>
+          <div class="cap-card-body">Graph-structured retrieval for complex enterprise knowledge. Traverse entity
+            relationships, surface implicit connections, and navigate organizational knowledge hierarchies.</div>
+        </div>
+        <div class="cap-card reveal reveal-delay-3" onclick="toggleCap(this)">
+          <div class="cap-card-header">
+            <div class="cap-card-title">Agentic RAG</div>
+            <div class="cap-card-tag"><svg viewBox="0 0 10 10">
+                <line x1="5" y1="1" x2="5" y2="9" />
+                <line x1="1" y1="5" x2="9" y2="5" />
+              </svg></div>
+          </div>
+          <div class="cap-card-body">AI agents that autonomously plan retrieval strategies, decide when to search,
+            synthesize across multiple retrievals, and iteratively refine answers for complex queries.</div>
+        </div>
+        <div class="cap-card reveal reveal-delay-3" onclick="toggleCap(this)">
+          <div class="cap-card-header">
+            <div class="cap-card-title">Multi-Hop Retrieval</div>
+            <div class="cap-card-tag"><svg viewBox="0 0 10 10">
+                <line x1="5" y1="1" x2="5" y2="9" />
+                <line x1="1" y1="5" x2="9" y2="5" />
+              </svg></div>
+          </div>
+          <div class="cap-card-body">Chain multiple retrieval steps to answer questions requiring reasoning across
+            disparate document sources. Essential for complex enterprise knowledge workflows.</div>
+        </div>
+        <div class="cap-card reveal reveal-delay-4" onclick="toggleCap(this)">
+          <div class="cap-card-header">
+            <div class="cap-card-title">Contextual Retrieval</div>
+            <div class="cap-card-tag"><svg viewBox="0 0 10 10">
+                <line x1="5" y1="1" x2="5" y2="9" />
+                <line x1="1" y1="5" x2="9" y2="5" />
+              </svg></div>
+          </div>
+          <div class="cap-card-body">Enriching chunks with contextual metadata before embedding — dramatically improving
+            retrieval precision for long documents and knowledge hierarchies.</div>
+        </div>
+        <div class="cap-card reveal reveal-delay-4" onclick="toggleCap(this)">
+          <div class="cap-card-header">
+            <div class="cap-card-title">Re-Ranking</div>
+            <div class="cap-card-tag"><svg viewBox="0 0 10 10">
+                <line x1="5" y1="1" x2="5" y2="9" />
+                <line x1="1" y1="5" x2="9" y2="5" />
+              </svg></div>
+          </div>
+          <div class="cap-card-body">Cross-encoder reranking of retrieved candidates against the original query.
+            Substantial precision improvements that transform retrieval quality in production systems.</div>
+        </div>
+        <div class="cap-card reveal reveal-delay-1" onclick="toggleCap(this)">
+          <div class="cap-card-header">
+            <div class="cap-card-title">Retrieval Evaluation</div>
+            <div class="cap-card-tag"><svg viewBox="0 0 10 10">
+                <line x1="5" y1="1" x2="5" y2="9" />
+                <line x1="1" y1="5" x2="9" y2="5" />
+              </svg></div>
+          </div>
+          <div class="cap-card-body">RAGAS, LLM-as-judge, and custom evaluation frameworks. We measure retrieval
+            precision, recall, faithfulness, and answer relevancy systematically.</div>
+        </div>
+        <div class="cap-card reveal reveal-delay-2" onclick="toggleCap(this)">
+          <div class="cap-card-header">
+            <div class="cap-card-title">AI Observability</div>
+            <div class="cap-card-tag"><svg viewBox="0 0 10 10">
+                <line x1="5" y1="1" x2="5" y2="9" />
+                <line x1="1" y1="5" x2="9" y2="5" />
+              </svg></div>
+          </div>
+          <div class="cap-card-body">Full pipeline observability with tracing, logging, and monitoring for every
+            retrieval operation. Know exactly why every answer was generated and how to improve it.</div>
+        </div>
+        <div class="cap-card reveal reveal-delay-3" onclick="toggleCap(this)">
+          <div class="cap-card-header">
+            <div class="cap-card-title">Citation Tracking</div>
+            <div class="cap-card-tag"><svg viewBox="0 0 10 10">
+                <line x1="5" y1="1" x2="5" y2="9" />
+                <line x1="1" y1="5" x2="9" y2="5" />
+              </svg></div>
+          </div>
+          <div class="cap-card-body">Every answer is fully traceable to its source documents. Enterprise-grade citation
+            systems that build trust and enable humans to verify AI-generated responses.</div>
+        </div>
+        <div class="cap-card reveal reveal-delay-4" onclick="toggleCap(this)">
+          <div class="cap-card-header">
+            <div class="cap-card-title">Hallucination Reduction</div>
+            <div class="cap-card-tag"><svg viewBox="0 0 10 10">
+                <line x1="5" y1="1" x2="5" y2="9" />
+                <line x1="1" y1="5" x2="9" y2="5" />
+              </svg></div>
+          </div>
+          <div class="cap-card-body">Systematic approaches to grounding, faithfulness scoring, and factual consistency
+            checks. We engineer hallucination out of enterprise RAG systems.</div>
+        </div>
       </div>
     </div>
+  </section>
 
-    <div class="footer-bottom">
-      <div class="footer-copy">© 2026 Obsygnal, Inc. All rights reserved.</div>
-      <div class="footer-tagline">Transforming Enterprise Knowledge Into Intelligence</div>
+  <!-- INSIGHTS -->
+  <section id="insights">
+    <div class="container">
+      <div class="section-label reveal">INSIGHTS</div>
+      <h2 class="section-title reveal reveal-delay-1">From the <span class="gradient-text">Knowledge Lab</span></h2>
+      <p style="color:var(--text2);max-width:520px;margin-top:16px;line-height:1.8;font-size:0.95rem;"
+        class="reveal reveal-delay-2">
+        Deep technical writing on retrieval architecture, enterprise AI, and the future of organizational knowledge.
+      </p>
+
+      <div class="insights-grid">
+
+        <div class="insight-card reveal reveal-delay-1">
+          <div class="insight-meta">
+            <span class="insight-tag">Architecture</span>
+            <span class="insight-read">12 min read</span>
+          </div>
+          <div class="insight-title">The Evolution of RAG: From Naive Pipelines to Production Intelligence</div>
+          <div class="insight-excerpt">How retrieval-augmented generation has matured from a simple
+            retrieve-and-generate pattern into a sophisticated family of architectures that power enterprise knowledge
+            systems.</div>
+          <div class="insight-arrow">Read article <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg></div>
+        </div>
+
+        <div class="insight-card reveal reveal-delay-2">
+          <div class="insight-meta">
+            <span class="insight-tag">Knowledge Graphs</span>
+            <span class="insight-read">9 min read</span>
+          </div>
+          <div class="insight-title">Knowledge Graphs and Enterprise Intelligence</div>
+          <div class="insight-excerpt">Why knowledge graphs are the missing layer in most enterprise RAG systems — and
+            how graph-based retrieval fundamentally changes the quality of answers you can achieve.</div>
+          <div class="insight-arrow">Read article <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg></div>
+        </div>
+
+        <div class="insight-card reveal reveal-delay-3">
+          <div class="insight-meta">
+            <span class="insight-tag">Agentic AI</span>
+            <span class="insight-read">15 min read</span>
+          </div>
+          <div class="insight-title">Agentic RAG Architecture Patterns for the Enterprise</div>
+          <div class="insight-excerpt">A comprehensive look at how autonomous retrieval agents differ from static
+            pipelines — and the architectural patterns that make them reliable enough for enterprise deployment.</div>
+          <div class="insight-arrow">Read article <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg></div>
+        </div>
+
+        <div class="insight-card reveal reveal-delay-1">
+          <div class="insight-meta">
+            <span class="insight-tag">Search</span>
+            <span class="insight-read">7 min read</span>
+          </div>
+          <div class="insight-title">Why Enterprise Search Is Broken — And How RAG Fixes It</div>
+          <div class="insight-excerpt">The fundamental failure modes of keyword search in large organizations, and why
+            semantic retrieval with grounded generation represents a structural improvement, not just an incremental
+            one.</div>
+          <div class="insight-arrow">Read article <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg></div>
+        </div>
+
+        <div class="insight-card reveal reveal-delay-2">
+          <div class="insight-meta">
+            <span class="insight-tag">Production</span>
+            <span class="insight-read">11 min read</span>
+          </div>
+          <div class="insight-title">Building Reliable AI Systems: Observability in the Retrieval Layer</div>
+          <div class="insight-excerpt">The principles and practices that separate reliable production RAG systems from
+            brittle prototypes — with a focus on tracing, evaluation, and continuous improvement.</div>
+          <div class="insight-arrow">Read article <svg width="12" height="12" viewBox="0 0 24 24" fill="none"
+              stroke="currentColor" stroke-width="2.5">
+              <line x1="5" y1="12" x2="19" y2="12" />
+              <polyline points="12 5 19 12 12 19" />
+            </svg></div>
+        </div>
+
+      </div>
     </div>
-  </div>
-</footer>
+  </section>
 
-<script>
-// ─── PAGE LOADER ────────────────────────────────────────
-window.addEventListener('load', () => {
-  setTimeout(() => {
-    document.getElementById('page-loader').classList.add('hidden');
-    // Trigger initial reveal for above-fold elements
-    document.querySelectorAll('.reveal').forEach(el => {
-      const rect = el.getBoundingClientRect();
-      if (rect.top < window.innerHeight) el.classList.add('visible');
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="container">
+      <div class="section-label reveal">THE TEAM</div>
+      <h2 class="section-title reveal reveal-delay-1">The Builders Behind<br><span class="gradient-text">Obsygnal</span>
+      </h2>
+
+      <p class="about-intro reveal reveal-delay-2">
+        We believe the future of enterprise AI depends on trusted knowledge. Obsygnal was founded by engineers,
+        architects, and problem-solvers who are passionate about helping organizations unlock the value hidden inside
+        their information — and turning it into real, operational intelligence.
+      </p>
+
+      <div class="team-grid">
+        <div class="team-card reveal reveal-delay-1">
+          <div class="team-avatar">BK</div>
+          <div class="team-name">Bikram Sarkar</div>
+          <div class="team-role">Co-Founder</div>
+          <div class="team-bio"> Machine Learning engineer specializing in information retrieval and enterprise search
+            infrastructure.</div>
+        </div>
+        <div class="team-card reveal reveal-delay-2">
+          <div class="team-avatar">AK</div>
+          <div class="team-name">Akhil Dhanpal</div>
+          <div class="team-role">Co-Founder</div>
+          <div class="team-bio">ML systems architect with deep expertise in vector databases, knowledge graphs, and
+            production LLM infrastructure.</div>
+        </div>
+        <div class="team-card reveal reveal-delay-3">
+          <div class="team-avatar">NP</div>
+          <div class="team-name">Naveen Pawar</div>
+          <div class="team-role">Co-Founder</div>
+
+          <div class="team-bio">Enterprise software architect focused on designing scalable, observable, and
+            maintainable knowledge systems.</div>
+        </div>
+        <div class="team-card reveal reveal-delay-4">
+          <div class="team-avatar">SG</div>
+          <div class="team-name">Souradeep Ghosh</div>
+          <div class="team-role">Co-Founder</div>
+          <div class="team-bio">NLP and information retrieval, focused on pushing the boundaries of RAG evaluation and
+            accuracy.</div>
+        </div>
+        <div class="team-card reveal reveal-delay-5">
+          <div class="team-avatar">NS</div>
+          <div class="team-name">Nil Sinha</div>
+          <div class="team-role">Co-Founder</div>
+          <div class="team-bio">Data engineer with a passion for building tools that turn data into actionable insights.
+          </div>
+        </div>
+      </div>
+
+      <div class="philosophy reveal reveal-delay-2">
+        <div class="philosophy-title">Our Philosophy</div>
+        <div class="philosophy-items">
+          <div class="philosophy-item">
+            <div class="philosophy-item-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M18 8h1a4 4 0 0 1 0 8h-1" />
+                <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z" />
+                <line x1="6" y1="1" x2="6" y2="4" />
+                <line x1="10" y1="1" x2="10" y2="4" />
+                <line x1="14" y1="1" x2="14" y2="4" />
+              </svg>
+            </div>
+            <p><strong style="color:var(--text1);display:block;margin-bottom:4px;">Knowledge should not be
+                trapped.</strong>Every piece of organizational knowledge should be accessible to the people who need it,
+              when they need it.</p>
+          </div>
+          <div class="philosophy-item">
+            <div class="philosophy-item-icon">
+              <svg viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+              </svg>
+            </div>
+            <p><strong style="color:var(--text1);display:block;margin-bottom:4px;">Information should be
+                discoverable.</strong>The right answer exists somewhere in your organization. It should take seconds,
+              not days, to find it.</p>
+          </div>
+          <div class="philosophy-item">
+            <div class="philosophy-item-icon">
+              <svg viewBox="0 0 24 24">
+                <polyline points="20 6 9 17 4 12" />
+              </svg>
+            </div>
+            <p><strong style="color:var(--text1);display:block;margin-bottom:4px;">AI should be grounded in
+                truth.</strong>Generative AI must be anchored in verified, organizational knowledge — not trained
+              intuitions about what might be true.</p>
+          </div>
+          <div class="philosophy-item">
+            <div class="philosophy-item-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                <circle cx="9" cy="7" r="4" />
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+              </svg>
+            </div>
+            <p><strong style="color:var(--text1);display:block;margin-bottom:4px;">Technology should amplify human
+                expertise.</strong>The goal is not to replace human judgment — it's to ensure human knowledge is always
+              findable and actionable.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section id="process">
+    <div class="container">
+      <div class="section-label reveal">HOW WE WORK</div>
+      <h2 class="section-title reveal reveal-delay-1">From Discovery to<br><span class="gradient-text">Deployed
+          Intelligence</span></h2>
+
+      <div class="process-timeline">
+        <div class="process-step reveal reveal-delay-1">
+          <div class="process-num">1</div>
+          <div class="process-step-label">Discovery</div>
+          <div class="process-step-title">Understand</div>
+          <div class="process-step-desc">Map your knowledge landscape, business challenges, and success criteria. Define
+            what "good" looks like.</div>
+        </div>
+        <div class="process-step reveal reveal-delay-2">
+          <div class="process-num">2</div>
+          <div class="process-step-label">Architecture</div>
+          <div class="process-step-title">Design</div>
+          <div class="process-step-desc">Design the optimal retrieval architecture for your specific knowledge sources,
+            query patterns, and scale.</div>
+        </div>
+        <div class="process-step reveal reveal-delay-3">
+          <div class="process-num">3</div>
+          <div class="process-step-label">Build</div>
+          <div class="process-step-title">Implement</div>
+          <div class="process-step-desc">Build production-grade retrieval systems with observability, evaluation, and
+            enterprise-grade reliability baked in.</div>
+        </div>
+        <div class="process-step reveal reveal-delay-4">
+          <div class="process-num">4</div>
+          <div class="process-step-label">Deploy</div>
+          <div class="process-step-title">Integrate</div>
+          <div class="process-step-desc">Integrate seamlessly with your existing enterprise workflows, tools, and
+            authentication infrastructure.</div>
+        </div>
+        <div class="process-step reveal reveal-delay-5">
+          <div class="process-num">5</div>
+          <div class="process-step-label">Optimize</div>
+          <div class="process-step-title">Improve</div>
+          <div class="process-step-desc">Continuously measure retrieval quality, monitor production behavior, and
+            improve system accuracy over time.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section id="final-cta">
+    <canvas id="cta-canvas"></canvas>
+    <div class="cta-divider"></div>
+    <div class="cta-content">
+      <div class="section-label reveal" style="justify-content:center;">YOUR ANSWERS ARE ALREADY THERE</div>
+      <h2 class="cta-headline reveal reveal-delay-1">
+        Your Organization<br>Already Has<br><span class="gradient-text">The Answers</span>
+      </h2>
+      <p class="cta-sub reveal reveal-delay-2">Let's make them accessible.</p>
+      <div class="cta-btns reveal reveal-delay-3">
+        <a href="#contact" class="btn btn-primary" style="padding:15px 36px;font-size:1rem;">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="3" y="4" width="18" height="18" rx="2" />
+            <line x1="16" y1="2" x2="16" y2="6" />
+            <line x1="8" y1="2" x2="8" y2="6" />
+            <line x1="3" y1="10" x2="21" y2="10" />
+          </svg>
+          Book Discovery Call
+        </a>
+        <a href="mailto:hello@obsygnal.com" class="btn btn-ghost" style="padding:15px 36px;font-size:1rem;">Contact
+          Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <div class="section-label reveal">GET IN TOUCH</div>
+      <h2 class="section-title reveal reveal-delay-1">Start the <span class="gradient-text">Conversation</span></h2>
+
+      <div class="contact-wrapper">
+        <div>
+          <div class="contact-info">
+            <h3>Tell us about your knowledge challenge</h3>
+            <p>We work with enterprises, mid-market companies, and funded startups that are serious about building
+              production-grade RAG infrastructure. Every engagement starts with a focused discovery conversation.</p>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+            </div>
+            <a href="mailto:hello@obsygnal.com">hello@obsygnal.com</a>
+          </div>
+
+          <div class="contact-detail">
+            <div class="contact-detail-icon">
+              <svg viewBox="0 0 24 24">
+                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z" />
+                <circle cx="12" cy="10" r="3" />
+              </svg>
+            </div>
+            <span>Hyderabad, Telangana, India · Serving enterprises globally</span>
+
+          </div>
+
+          <div class="contact-form reveal reveal-delay-2">
+            <div class="form-row">
+              <div class="form-group">
+                <label>Name</label>
+                <input type="text" placeholder="Your full name">
+              </div>
+              <div class="form-group">
+                <label>Company</label>
+                <input type="text" placeholder="Company name">
+              </div>
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label>Email</label>
+                <input type="email" placeholder="work@company.com">
+              </div>
+              <div class="form-group">
+                <label>Phone</label>
+                <input type="tel" placeholder="+1 (555) 000-0000">
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Tell us about your knowledge challenge</label>
+              <textarea
+                placeholder="Describe your current knowledge landscape, the challenge you're facing, and what a successful outcome would look like for your organization..."></textarea>
+            </div>
+            <button class="btn btn-primary" style="width:100%;justify-content:center;padding:15px;font-size:1rem;"
+              onclick="handleSubmit(event)">
+              Let's Talk
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <line x1="5" y1="12" x2="19" y2="12" />
+                <polyline points="12 5 19 12 12 19" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a href="#" class="nav-logo" style="font-size:1.5rem;">Obs<span>y</span>gnal</a>
+          <p>Transforming Enterprise Knowledge Into Intelligence. Production-grade RAG systems for organizations that
+            need trusted, grounded AI.</p>
+          <div class="footer-socials">
+            <a href="#" class="footer-social" title="LinkedIn">
+              <svg viewBox="0 0 24 24">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+            </a>
+            <a href="#" class="footer-social" title="GitHub">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+              </svg>
+            </a>
+            <a href="#" class="footer-social" title="X / Twitter">
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+              </svg>
+            </a>
+          </div>
+        </div>
+
+        <div class="footer-col">
+          <h4>Solutions</h4>
+          <ul>
+            <li><a href="#services">Knowledge Assistants</a></li>
+            <li><a href="#services">Customer Support RAG</a></li>
+            <li><a href="#services">Engineering Knowledge</a></li>
+            <li><a href="#services">Security & Ops</a></li>
+            <li><a href="#services">Compliance AI</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Architectures</h4>
+          <ul>
+            <li><a href="#capabilities">Hybrid Search</a></li>
+            <li><a href="#capabilities">Knowledge Graph RAG</a></li>
+            <li><a href="#capabilities">Agentic RAG</a></li>
+            <li><a href="#capabilities">Multi-Hop Retrieval</a></li>
+            <li><a href="#solution">Full Architecture</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4>Company</h4>
+          <ul>
+            <li><a href="#insights">Insights</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#process">How We Work</a></li>
+            <li><a href="#contact">Contact</a></li>
+            <li><a href="mailto:hello@obsygnal.com">hello@obsygnal.com</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-copy">© 2026 Obsygnal, Inc. All rights reserved.</div>
+        <div class="footer-tagline">Transforming Enterprise Knowledge Into Intelligence</div>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ─── PAGE LOADER ────────────────────────────────────────
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        document.getElementById('page-loader').classList.add('hidden');
+        // Trigger initial reveal for above-fold elements
+        document.querySelectorAll('.reveal').forEach(el => {
+          const rect = el.getBoundingClientRect();
+          if (rect.top < window.innerHeight) el.classList.add('visible');
+        });
+      }, 900);
     });
-  }, 900);
-});
 
-// ─── NAV SCROLL ─────────────────────────────────────────
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 20);
-});
+    // ─── NAV SCROLL ─────────────────────────────────────────
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    });
 
-// ─── MOBILE MENU ────────────────────────────────────────
-function toggleMobile() {
-  const menu = document.getElementById('mobile-menu');
-  menu.classList.toggle('open');
-}
-
-// ─── SCROLL REVEAL ──────────────────────────────────────
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
+    // ─── MOBILE MENU ────────────────────────────────────────
+    function toggleMobile() {
+      const menu = document.getElementById('mobile-menu');
+      menu.classList.toggle('open');
     }
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-// ─── ROTATING HEADLINES ─────────────────────────────────
-const rotatingItems = document.querySelectorAll('.hero-rotating-item');
-let currentRotating = 0;
-setInterval(() => {
-  rotatingItems[currentRotating].classList.remove('active');
-  currentRotating = (currentRotating + 1) % rotatingItems.length;
-  rotatingItems[currentRotating].classList.add('active');
-}, 3500);
-
-// ─── HERO CANVAS ANIMATION ──────────────────────────────
-(function() {
-  const canvas = document.getElementById('hero-canvas');
-  const ctx = canvas.getContext('2d');
-  let w, h, nodes, signals, animId;
-
-  function resize() {
-    w = canvas.width = window.innerWidth;
-    h = canvas.height = window.innerHeight;
-  }
-
-  function createNodes() {
-    const count = Math.min(Math.floor(w / 18), 90);
-    nodes = [];
-    signals = [];
-    for (let i = 0; i < count; i++) {
-      nodes.push({
-        x: Math.random() * w,
-        y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.35,
-        vy: (Math.random() - 0.5) * 0.35,
-        r: Math.random() * 1.8 + 0.8,
-        alpha: Math.random() * 0.5 + 0.2,
-        pulse: Math.random() * Math.PI * 2,
-        pulseSpeed: Math.random() * 0.025 + 0.01
+    // ─── SCROLL REVEAL ──────────────────────────────────────
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
       });
-    }
-  }
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
-  function spawnSignal() {
-    if (nodes.length < 2) return;
-    const a = nodes[Math.floor(Math.random() * nodes.length)];
-    let best = null, bestDist = Infinity;
-    for (const b of nodes) {
-      if (b === a) continue;
-      const d = Math.hypot(a.x - b.x, a.y - b.y);
-      if (d < 160 && d < bestDist) { best = b; bestDist = d; }
-    }
-    if (best) signals.push({ from: a, to: best, t: 0, speed: Math.random() * 0.016 + 0.008 });
-  }
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
-  function draw() {
-    ctx.clearRect(0, 0, w, h);
+    // ─── ROTATING HEADLINES ─────────────────────────────────
+    const rotatingItems = document.querySelectorAll('.hero-rotating-item');
+    let currentRotating = 0;
+    setInterval(() => {
+      rotatingItems[currentRotating].classList.remove('active');
+      currentRotating = (currentRotating + 1) % rotatingItems.length;
+      rotatingItems[currentRotating].classList.add('active');
+    }, 3500);
 
-    // Connections
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const a = nodes[i], b = nodes[j];
-        const d = Math.hypot(a.x - b.x, a.y - b.y);
-        if (d < 160) {
-          const alpha = (1 - d / 160) * 0.18;
-          ctx.beginPath();
-          ctx.strokeStyle = `rgba(0,200,255,${alpha})`;
-          ctx.lineWidth = 0.5;
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.stroke();
+    // ─── HERO CANVAS ANIMATION ──────────────────────────────
+    (function () {
+      const canvas = document.getElementById('hero-canvas');
+      const ctx = canvas.getContext('2d');
+      let w, h, nodes, signals, animId;
+
+      function resize() {
+        w = canvas.width = window.innerWidth;
+        h = canvas.height = window.innerHeight;
+      }
+
+      function createNodes() {
+        const count = Math.min(Math.floor(w / 18), 90);
+        nodes = [];
+        signals = [];
+        for (let i = 0; i < count; i++) {
+          nodes.push({
+            x: Math.random() * w,
+            y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.35,
+            vy: (Math.random() - 0.5) * 0.35,
+            r: Math.random() * 1.8 + 0.8,
+            alpha: Math.random() * 0.5 + 0.2,
+            pulse: Math.random() * Math.PI * 2,
+            pulseSpeed: Math.random() * 0.025 + 0.01
+          });
         }
       }
-    }
 
-    // Signals
-    for (let i = signals.length - 1; i >= 0; i--) {
-      const s = signals[i];
-      s.t += s.speed;
-      if (s.t >= 1) { signals.splice(i, 1); continue; }
-      const ease = s.t < 0.5 ? 2 * s.t * s.t : -1 + (4 - 2 * s.t) * s.t;
-      const x = s.from.x + (s.to.x - s.from.x) * ease;
-      const y = s.from.y + (s.to.y - s.from.y) * ease;
-      const fade = s.t < 0.1 ? s.t * 10 : s.t > 0.9 ? (1 - s.t) * 10 : 1;
-      const grd = ctx.createRadialGradient(x, y, 0, x, y, 8);
-      grd.addColorStop(0, `rgba(0,230,255,${0.95 * fade})`);
-      grd.addColorStop(0.4, `rgba(0,200,255,${0.5 * fade})`);
-      grd.addColorStop(1, `rgba(0,180,255,0)`);
-      ctx.beginPath();
-      ctx.fillStyle = grd;
-      ctx.arc(x, y, 8, 0, Math.PI * 2);
-      ctx.fill();
-    }
+      function spawnSignal() {
+        if (nodes.length < 2) return;
+        const a = nodes[Math.floor(Math.random() * nodes.length)];
+        let best = null, bestDist = Infinity;
+        for (const b of nodes) {
+          if (b === a) continue;
+          const d = Math.hypot(a.x - b.x, a.y - b.y);
+          if (d < 160 && d < bestDist) { best = b; bestDist = d; }
+        }
+        if (best) signals.push({ from: a, to: best, t: 0, speed: Math.random() * 0.016 + 0.008 });
+      }
 
-    // Nodes
-    for (const n of nodes) {
-      n.pulse += n.pulseSpeed;
-      n.x += n.vx; n.y += n.vy;
-      if (n.x < 0 || n.x > w) n.vx *= -1;
-      if (n.y < 0 || n.y > h) n.vy *= -1;
-      const pf = Math.sin(n.pulse) * 0.4 + 1;
-      const r = n.r * pf;
-      // Glow
-      const grd = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, r * 5);
-      grd.addColorStop(0, `rgba(0,200,255,${n.alpha * 0.5})`);
-      grd.addColorStop(1, `rgba(0,200,255,0)`);
-      ctx.beginPath(); ctx.fillStyle = grd;
-      ctx.arc(n.x, n.y, r * 5, 0, Math.PI * 2); ctx.fill();
-      // Core
-      ctx.beginPath();
-      ctx.fillStyle = `rgba(0,220,255,${n.alpha})`;
-      ctx.arc(n.x, n.y, r, 0, Math.PI * 2); ctx.fill();
-    }
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
 
-    if (Math.random() < 0.04) spawnSignal();
-    animId = requestAnimationFrame(draw);
-  }
+        // Connections
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const a = nodes[i], b = nodes[j];
+            const d = Math.hypot(a.x - b.x, a.y - b.y);
+            if (d < 160) {
+              const alpha = (1 - d / 160) * 0.18;
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(0,200,255,${alpha})`;
+              ctx.lineWidth = 0.5;
+              ctx.moveTo(a.x, a.y);
+              ctx.lineTo(b.x, b.y);
+              ctx.stroke();
+            }
+          }
+        }
 
-  resize();
-  createNodes();
-  draw();
-  window.addEventListener('resize', () => { cancelAnimationFrame(animId); resize(); createNodes(); draw(); });
-})();
-
-// ─── CTA CANVAS ─────────────────────────────────────────
-(function() {
-  const canvas = document.getElementById('cta-canvas');
-  const ctx = canvas.getContext('2d');
-  let w, h, nodes, animId;
-
-  function resize() {
-    w = canvas.width = canvas.offsetWidth;
-    h = canvas.height = canvas.offsetHeight;
-  }
-
-  function createNodes() {
-    nodes = [];
-    const count = Math.min(Math.floor(w / 22), 60);
-    for (let i = 0; i < count; i++) {
-      nodes.push({
-        x: Math.random() * w, y: Math.random() * h,
-        vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
-        r: Math.random() * 1.5 + 0.8,
-        alpha: Math.random() * 0.4 + 0.15,
-        pulse: Math.random() * Math.PI * 2,
-        pulseSpeed: Math.random() * 0.02 + 0.008
-      });
-    }
-  }
-
-  function draw() {
-    ctx.clearRect(0, 0, w, h);
-    for (let i = 0; i < nodes.length; i++) {
-      for (let j = i + 1; j < nodes.length; j++) {
-        const a = nodes[i], b = nodes[j];
-        const d = Math.hypot(a.x - b.x, a.y - b.y);
-        if (d < 140) {
+        // Signals
+        for (let i = signals.length - 1; i >= 0; i--) {
+          const s = signals[i];
+          s.t += s.speed;
+          if (s.t >= 1) { signals.splice(i, 1); continue; }
+          const ease = s.t < 0.5 ? 2 * s.t * s.t : -1 + (4 - 2 * s.t) * s.t;
+          const x = s.from.x + (s.to.x - s.from.x) * ease;
+          const y = s.from.y + (s.to.y - s.from.y) * ease;
+          const fade = s.t < 0.1 ? s.t * 10 : s.t > 0.9 ? (1 - s.t) * 10 : 1;
+          const grd = ctx.createRadialGradient(x, y, 0, x, y, 8);
+          grd.addColorStop(0, `rgba(0,230,255,${0.95 * fade})`);
+          grd.addColorStop(0.4, `rgba(0,200,255,${0.5 * fade})`);
+          grd.addColorStop(1, `rgba(0,180,255,0)`);
           ctx.beginPath();
-          ctx.strokeStyle = `rgba(0,200,255,${(1 - d / 140) * 0.15})`;
-          ctx.lineWidth = 0.5;
-          ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+          ctx.fillStyle = grd;
+          ctx.arc(x, y, 8, 0, Math.PI * 2);
+          ctx.fill();
+        }
+
+        // Nodes
+        for (const n of nodes) {
+          n.pulse += n.pulseSpeed;
+          n.x += n.vx; n.y += n.vy;
+          if (n.x < 0 || n.x > w) n.vx *= -1;
+          if (n.y < 0 || n.y > h) n.vy *= -1;
+          const pf = Math.sin(n.pulse) * 0.4 + 1;
+          const r = n.r * pf;
+          // Glow
+          const grd = ctx.createRadialGradient(n.x, n.y, 0, n.x, n.y, r * 5);
+          grd.addColorStop(0, `rgba(0,200,255,${n.alpha * 0.5})`);
+          grd.addColorStop(1, `rgba(0,200,255,0)`);
+          ctx.beginPath(); ctx.fillStyle = grd;
+          ctx.arc(n.x, n.y, r * 5, 0, Math.PI * 2); ctx.fill();
+          // Core
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(0,220,255,${n.alpha})`;
+          ctx.arc(n.x, n.y, r, 0, Math.PI * 2); ctx.fill();
+        }
+
+        if (Math.random() < 0.04) spawnSignal();
+        animId = requestAnimationFrame(draw);
+      }
+
+      resize();
+      createNodes();
+      draw();
+      window.addEventListener('resize', () => { cancelAnimationFrame(animId); resize(); createNodes(); draw(); });
+    })();
+
+    // ─── CTA CANVAS ─────────────────────────────────────────
+    (function () {
+      const canvas = document.getElementById('cta-canvas');
+      const ctx = canvas.getContext('2d');
+      let w, h, nodes, animId;
+
+      function resize() {
+        w = canvas.width = canvas.offsetWidth;
+        h = canvas.height = canvas.offsetHeight;
+      }
+
+      function createNodes() {
+        nodes = [];
+        const count = Math.min(Math.floor(w / 22), 60);
+        for (let i = 0; i < count; i++) {
+          nodes.push({
+            x: Math.random() * w, y: Math.random() * h,
+            vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
+            r: Math.random() * 1.5 + 0.8,
+            alpha: Math.random() * 0.4 + 0.15,
+            pulse: Math.random() * Math.PI * 2,
+            pulseSpeed: Math.random() * 0.02 + 0.008
+          });
         }
       }
+
+      function draw() {
+        ctx.clearRect(0, 0, w, h);
+        for (let i = 0; i < nodes.length; i++) {
+          for (let j = i + 1; j < nodes.length; j++) {
+            const a = nodes[i], b = nodes[j];
+            const d = Math.hypot(a.x - b.x, a.y - b.y);
+            if (d < 140) {
+              ctx.beginPath();
+              ctx.strokeStyle = `rgba(0,200,255,${(1 - d / 140) * 0.15})`;
+              ctx.lineWidth = 0.5;
+              ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+            }
+          }
+        }
+        for (const n of nodes) {
+          n.pulse += n.pulseSpeed;
+          n.x += n.vx; n.y += n.vy;
+          if (n.x < 0 || n.x > w) n.vx *= -1;
+          if (n.y < 0 || n.y > h) n.vy *= -1;
+          const pf = Math.sin(n.pulse) * 0.3 + 1;
+          ctx.beginPath();
+          ctx.fillStyle = `rgba(0,210,255,${n.alpha})`;
+          ctx.arc(n.x, n.y, n.r * pf, 0, Math.PI * 2); ctx.fill();
+        }
+        animId = requestAnimationFrame(draw);
+      }
+
+      resize(); createNodes(); draw();
+      window.addEventListener('resize', () => { cancelAnimationFrame(animId); resize(); createNodes(); draw(); });
+    })();
+
+    // ─── COUNTER ANIMATION ──────────────────────────────────
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        const target = parseFloat(el.dataset.target);
+        const suffix = el.dataset.suffix || '';
+        const duration = 2000;
+        const start = performance.now();
+        function update(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const ease = 1 - Math.pow(1 - progress, 3);
+          const current = Math.floor(ease * target);
+          el.textContent = current.toLocaleString() + suffix;
+          if (progress < 1) requestAnimationFrame(update);
+        }
+        requestAnimationFrame(update);
+        counterObserver.unobserve(el);
+      });
+    }, { threshold: 0.5 });
+
+    document.querySelectorAll('.counter-value[data-target]').forEach(el => counterObserver.observe(el));
+
+    // ─── EXPANDABLE CAPABILITIES ────────────────────────────
+    function toggleCap(card) {
+      const wasOpen = card.classList.contains('open');
+      document.querySelectorAll('.cap-card').forEach(c => c.classList.remove('open'));
+      if (!wasOpen) card.classList.add('open');
     }
-    for (const n of nodes) {
-      n.pulse += n.pulseSpeed;
-      n.x += n.vx; n.y += n.vy;
-      if (n.x < 0 || n.x > w) n.vx *= -1;
-      if (n.y < 0 || n.y > h) n.vy *= -1;
-      const pf = Math.sin(n.pulse) * 0.3 + 1;
-      ctx.beginPath();
-      ctx.fillStyle = `rgba(0,210,255,${n.alpha})`;
-      ctx.arc(n.x, n.y, n.r * pf, 0, Math.PI * 2); ctx.fill();
-    }
-    animId = requestAnimationFrame(draw);
-  }
 
-  resize(); createNodes(); draw();
-  window.addEventListener('resize', () => { cancelAnimationFrame(animId); resize(); createNodes(); draw(); });
-})();
-
-// ─── COUNTER ANIMATION ──────────────────────────────────
-const counterObserver = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (!entry.isIntersecting) return;
-    const el = entry.target;
-    const target = parseFloat(el.dataset.target);
-    const suffix = el.dataset.suffix || '';
-    const duration = 2000;
-    const start = performance.now();
-    function update(now) {
-      const progress = Math.min((now - start) / duration, 1);
-      const ease = 1 - Math.pow(1 - progress, 3);
-      const current = Math.floor(ease * target);
-      el.textContent = current.toLocaleString() + suffix;
-      if (progress < 1) requestAnimationFrame(update);
-    }
-    requestAnimationFrame(update);
-    counterObserver.unobserve(el);
-  });
-}, { threshold: 0.5 });
-
-document.querySelectorAll('.counter-value[data-target]').forEach(el => counterObserver.observe(el));
-
-// ─── EXPANDABLE CAPABILITIES ────────────────────────────
-function toggleCap(card) {
-  const wasOpen = card.classList.contains('open');
-  document.querySelectorAll('.cap-card').forEach(c => c.classList.remove('open'));
-  if (!wasOpen) card.classList.add('open');
-}
-
-// ─── FORM HANDLER ───────────────────────────────────────
-function handleSubmit(e) {
-  e.preventDefault();
-  const btn = e.target;
-  btn.textContent = 'Message sent! We\'ll be in touch soon.';
-  btn.style.background = 'linear-gradient(135deg, #00CC99, #00FFCC)';
-  btn.disabled = true;
-  setTimeout(() => {
-    btn.innerHTML = 'Let\'s Talk <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
-    btn.style.background = '';
-    btn.disabled = false;
-  }, 4000);
-}
-
-// ─── SMOOTH ANCHOR SCROLL ───────────────────────────────
-document.querySelectorAll('a[href^="#"]').forEach(link => {
-  link.addEventListener('click', e => {
-    const target = document.querySelector(link.getAttribute('href'));
-    if (target) {
+    // ─── FORM HANDLER ───────────────────────────────────────
+    function handleSubmit(e) {
       e.preventDefault();
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const btn = e.target;
+      btn.textContent = 'Message sent! We\'ll be in touch soon.';
+      btn.style.background = 'linear-gradient(135deg, #00CC99, #00FFCC)';
+      btn.disabled = true;
+      setTimeout(() => {
+        btn.innerHTML = 'Let\'s Talk <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>';
+        btn.style.background = '';
+        btn.disabled = false;
+      }, 4000);
     }
-  });
-});
-</script>
+
+    // ─── SMOOTH ANCHOR SCROLL ───────────────────────────────
+    document.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', e => {
+        const target = document.querySelector(link.getAttribute('href'));
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+  </script>
 </body>
+
 </html>
